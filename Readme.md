@@ -1,6 +1,6 @@
 # CareRobots
 
-<img src="Images/care robots logo BONUS 1.png" width=600  >
+<img src="Images/care robots logo BONUS 1.png" width=300  >
 
 CareRobots is an OpenSoruce project developed by [Fab Lab UTFSM](http://fablab.usm.cl/), [LightHouse-DIG](https://lighthouse-dig.com/), [Center for Engineering Education and Outreach](https://ceeo.tufts.edu/) and [Marionas fab lab]. 
 
@@ -8,7 +8,7 @@ We aim tu build low cost telepresence robots, that can be build in any Fab Lab/M
 
 ## Structure
 
-<img src="Images/CareRobot.png" width=600  >
+<img src="Images/CareRobot.png" width=300  >
 
 Leo, aqui la idea seria mostrar mas imagenes de la estructura. 
 
@@ -31,6 +31,7 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 ### Laser Cutted - Structure
 
 |Part Name   |Number of parts   | Format |  Download Link |
+| :-:   | :-: |  :-: | :-: |
 | A1  |1   | .dxf |  [link](https://drive.google.com/file/d/1qUMhkHjF6LQkufdu41Rsg2A58V7bNPKg/view?usp=sharing) |
 | A1  |1   | .pdf |  [link](https://drive.google.com/file/d/10A2T8DMf_OYUFBTCkRg2jiaPDkv-Y5n-/view?usp=sharing) |
 | A2  |1   | .dxf |  [link](https://drive.google.com/file/d/1UI6lDsppqcmhL-nH30FwWpygrrH0wOEs/view?usp=sharing) |
@@ -41,6 +42,7 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 ### 3D Printed - Gimbal
 
 |Part Name   |Number of parts   | Download Link |
+| :-:   | :-: |  :-: |
 |  100.100.100 Codo Prinicpal | 1  |  [link](https://drive.google.com/file/d/1LrKNzIq5WH4Tc1kQPA7FDwKPdz81MEFJ/view?usp=sharing) |
 |  100.100.200 Conector de Pasador | 1  |  [link](https://drive.google.com/file/d/1waasu2H8KbEIScrLwfgzmZHd7Rx-Fj82/view?usp=sharing) |
 |  100.200.100 Codo tercero | 1  |  [link](https://drive.google.com/file/d/1nwIYlKD8nJdNT6cQvFXo4gyZvfr2DiPO/view?usp=sharing) |
@@ -56,6 +58,7 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 ## Bill of Materials
 
 |Part Name   | Quantity | Unit Price  | Download Link |
+| :-:   | :-: |  :-: | :-: |
 | OmniWheel   | 3   | $35 |  [Link](https://www.andymark.com/products/6-in-duraomni-wheel?sku=am-3154) |
 | Motor   | 3   | $33 |  [Link](https://www.andymark.com/products/neverest-orbital-3-7-gearmotor?sku=am-3461a) |
 | Wheel conversion plate   | 3   | $5.5 |  [Link](https://www.andymark.com/products/wheel-conversion-plate?sku=am-2609a) |
