@@ -8,7 +8,7 @@ We aim tu build low cost telepresence robots, that can be build in any Fab Lab/M
 
 ## Structure
 
-<img src="Imagenes/CareRobot.png" width=600  >
+<img src="Images/CareRobot.png" width=600  >
 
 Leo, aqui la idea seria mostrar mas imagenes de la estructura. 
 
@@ -20,6 +20,7 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 ### 3D Printed  - Structure
 
 |Part Name   |Number of parts   |  Download Link |
+| :-:   | :-: |  :-: |
 |  B1 | 1  |  [link](https://drive.google.com/file/d/1X95zLryoru4crX6b115vtqp_EDh8kSQb/view?usp=sharing)|
 |  B2 | 2  |  [link](https://drive.google.com/file/d/1_fum_8d5C-oLnXPcYOniwOqLqxyNqtJm/view?usp=sharing) |  
 |  B3 | 1  |  [link](https://drive.google.com/file/d/1nL7G1LNKwou2jkkLmy965ZC8Md9wTHIw/view?usp=sharing) |
