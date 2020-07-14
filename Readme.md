@@ -8,7 +8,7 @@ We aim tu build low cost telepresence robots, that can be build in any Fab Lab/M
 
 ## Structure
 
-<img src="Images/CareRobot.png" width=300  >
+<img src="Images/CareRobot.png" width=600  >
 
 Leo, aqui la idea seria mostrar mas imagenes de la estructura. 
 
@@ -64,7 +64,6 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 | Wheel conversion plate   | 3   | $5.5 |  [Link](https://www.andymark.com/products/wheel-conversion-plate?sku=am-2609a) |
 | Motor D-Bore Nub  | 3   | $9 |  [Link](https://www.andymark.com/products/6-mm-d-bore-xl-double-boss-nub-w-set-screw?sku=am-3441a) |
 | Motor Mount Plate  | 6   | $6 |  [Link](https://www.andymark.com/products/picobox-leo-mount-plate?sku=am-3474) |
-| NodeMcu | 1   | $4.2 |  [Link](https://www.amazon.com/NodeMcu-ESP8266-Internet-Development-Micropython/dp/B07PRMJ6QS/ref=sr_1_7_sspa?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3P3PAY42WKSSV&dchild=1&keywords=nodemcu+esp8266&qid=1594755022&sprefix=nodemcu%2Caps%2C146&sr=8-7-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzUDRNRDY4NVE0T09aJmVuY3J5cHRlZElkPUEwODA4MzE0QVBUOVhJOFFNSE04JmVuY3J5cHRlZEFkSWQ9QTA5NzM4MzUyWFRVRE5UVFY0UERIJndpZGdldE5hbWU9c3BfbXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==) |
 | NodeMcu | 1   | $4.2 |  [Link](https://www.amazon.com/NodeMcu-ESP8266-Internet-Development-Micropython/dp/B07PRMJ6QS/ref=sr_1_7_sspa?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3P3PAY42WKSSV&dchild=1&keywords=nodemcu+esp8266&qid=1594755022&sprefix=nodemcu%2Caps%2C146&sr=8-7-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzUDRNRDY4NVE0T09aJmVuY3J5cHRlZElkPUEwODA4MzE0QVBUOVhJOFFNSE04JmVuY3J5cHRlZEFkSWQ9QTA5NzM4MzUyWFRVRE5UVFY0UERIJndpZGdldE5hbWU9c3BfbXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==) |
 | DC motor driver | 2   | $8.89 |  [Link](https://www.amazon.com/-/es/Qunqi-2Packs-Controller-Stepper-Arduino/dp/B01M29YK5U/ref=sr_1_2?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=dc+motor+driver+arduino&qid=1594755116&sr=8-2) |
 | 12V 7 amp | 1  | $17.89 |  [Link](https://www.amazon.com/ExpertPower-EXP1270-Rechargeable-Lead-Battery/dp/B003S1RQ2S/ref=sr_1_1_sspa?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3SHR0DPZA47Z2&dchild=1&keywords=12v+battery&qid=1594755183&sprefix=12v+bate%2Caps%2C138&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyQ0FLVlk1NEdVOVdXJmVuY3J5cHRlZElkPUEwOTg0NjU0M1I1NVhMREdLVFBaVyZlbmNyeXB0ZWRBZElkPUEwMzY0NTEyQUI2UjZENVEyVzBHJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==2) |
