@@ -4,7 +4,7 @@
 
 CareRobots is an OpenSoruce project developed by [Fab Lab UTFSM](http://fablab.usm.cl/), [LightHouse-DIG](https://lighthouse-dig.com/), [Center for Engineering Education and Outreach](https://ceeo.tufts.edu/) and [Marionas fab lab]. 
 
-We aim tu build low cost telepresence robots, that can be build in any Fab Lab/Makerspace around the world, this robots are intented to protect healthcare service personnel from the COVID-19 spread from infected patients. 
+We aim to build low cost telepresence robots, that can be build in any Fab Lab/Makerspace around the world, this robot are intented to protect healthcare service personnel from the COVID-19 spread from infected patients. 
 
 ## Structure
 
@@ -12,12 +12,11 @@ We aim tu build low cost telepresence robots, that can be build in any Fab Lab/M
 
 Leo, aqui la idea seria mostrar mas imagenes de la estructura. 
 
-
 ## Fabrication 
 
 In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the world, we only use 3D printers and laser cutters, all parts can be downloaded in the following [link](https://drive.google.com/drive/folders/1tkrLoz_K_6apnlru4AjxvQd69-fxhUXf?usp=sharing).
 
-### 3D Printed  - Structure
+### 3D Printed - Structure
 
 |Part Name   |Number of parts   |  Download Link |
 | :-:   | :-: |  :-: |
@@ -73,4 +72,4 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 
 ## Assembly
 
-Pictures of the assemblyng process. 
+Pictures of the assembly process. 
