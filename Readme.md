@@ -1,7 +1,7 @@
 # CareRobots
 
 <p align="center">
-  <img width="500"  src="Images/care robots logo BONUS 1.png">
+  <img width="400"  src="Images/care robots logo BONUS 1.png">
 </p>
 
 CareRobots is an OpenSoruce project developed by [Fab Lab UTFSM](http://fablab.usm.cl/), [LightHouse-DIG](https://lighthouse-dig.com/), [Center for Engineering Education and Outreach](https://ceeo.tufts.edu/) and [Marionas fab lab]. 
