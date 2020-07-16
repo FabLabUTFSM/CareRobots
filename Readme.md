@@ -10,7 +10,37 @@ We aim to build low cost telepresence robots, that can be build in any Fab Lab/M
 
 ## Structure
 
+<div class="wrapper">
+  <div class="box a">A</div>
+  <div class="box b">B</div>
+  <div class="box c">C</div>
+  <div class="box c">D</div>
+</div>
 
+.wrapper {
+    display: grid;
+    grid-auto-flow: column;  
+}
+
+.box {
+    align-self: center;
+}
+
+
+
+body {
+  margin: 40px;
+}
+  
+.box.a {
+     <img width="200" src="Images/estructura.jpeg">
+}
+ .box.b {
+     <img width="200" src="Images/estructura.jpeg">
+}
+  .box.c {
+     <img width="200" src="Images/estructura.jpeg">
+}
 
 <p align="left">
   <img width="200" src="Images/estructura.jpeg">
