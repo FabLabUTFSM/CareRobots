@@ -10,9 +10,9 @@ We aim to build low cost telepresence robots, that can be build in any Fab Lab/M
 
 ## Structure
 
-![image alt >](/estructura.jpeg")
-![image alt <](/estructura.jpeg")
-![image alt ><](/estructura.jpeg")
+<img style="float: right;" src="Images/estructura.jpeg">
+<img style="float: left;" src="Images/estructura.jpeg>
+<img style="float: center;" src="Images/estructura.jpeg>
 
 <p align="right">
   <img width="460" height="300" src="Images/estructura.jpeg">
