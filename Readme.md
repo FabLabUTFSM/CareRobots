@@ -12,7 +12,7 @@ We aim to build low cost telepresence robots, that can be build in any Fab Lab/M
 
 
 
-<img src="Images/estructura.jpeg" width=200  > <img src="Images/estructura2.jpeg" width=200  > <img src="Images/base.jpeg" width=200  >
+<img src="Images/estructura.jpeg" width=400  > <img src="Images/estructura2.jpeg" width=400  > <img src="Images/base.jpeg" width=400  >
 
 ## Fabrication 
 
