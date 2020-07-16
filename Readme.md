@@ -12,7 +12,7 @@ We aim to build low cost telepresence robots, that can be build in any Fab Lab/M
 
 
 
-<img src="Images/estructura.jpeg" width=400  > <img src="Images/estructura2.jpeg" width=400  > <img src="Images/base.jpeg" width=400  >
+<img src="Images/estructura.jpeg" width=350  > <img src="Images/base.jpeg" width=350  > <img src="Images/estructura2.jpeg" width=350  > 
 
 ## Fabrication 
 
@@ -42,8 +42,7 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 
 ### 3D Printed - Gimbal
 
-<img src="Images/gimbal1.jpeg" width=200  >
-<img src="Images/gimbal2.jpeg" width=200  >
+<img src="Images/gimbal1.jpeg" width=350  > <img src="Images/gimbal2.jpeg" width=350  >
 
 |Part Name   |Number of parts   | Download Link |
 | :-:   | :-: |  :-: |
