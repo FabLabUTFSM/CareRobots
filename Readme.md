@@ -3,7 +3,6 @@
 <p align="center">
   <img width="600"  src="Images/care robots logo BONUS 1.png">
 </p>
-<img src="Images/care robots logo BONUS 1.png" width=300  >
 
 CareRobots is an OpenSoruce project developed by [Fab Lab UTFSM](http://fablab.usm.cl/), [LightHouse-DIG](https://lighthouse-dig.com/), [Center for Engineering Education and Outreach](https://ceeo.tufts.edu/) and [Marionas fab lab]. 
 
@@ -15,8 +14,10 @@ We aim to build low cost telepresence robots, that can be build in any Fab Lab/M
 <p>
 
 <p align="center">
-    <img src="Images/estructura.jpeg" width=600  > <img src="Images/estructura2.jpeg" width=600  >
+    <img src="Images/estructura.jpeg" width=600  >
 <p>
+
+ <img src="Images/estructura2.jpeg" width=600  >
 <img src="Images/base.jpeg" width=600  >
 
 ## Fabrication 
