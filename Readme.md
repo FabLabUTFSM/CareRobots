@@ -1,3 +1,9 @@
+<div class="wrapper">
+    <div class="box a">A</div>
+    <div class="box b">B</div>
+    <div class="box c">C</div>
+</div>
+
 # CareRobots
 
 <p align="center">
