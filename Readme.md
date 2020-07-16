@@ -1,7 +1,7 @@
 # CareRobots
 
 <p align="center">
-  <img width="600"  src="Images/care robots logo BONUS 1.png">
+  <img width="500"  src="Images/care robots logo BONUS 1.png">
 </p>
 
 CareRobots is an OpenSoruce project developed by [Fab Lab UTFSM](http://fablab.usm.cl/), [LightHouse-DIG](https://lighthouse-dig.com/), [Center for Engineering Education and Outreach](https://ceeo.tufts.edu/) and [Marionas fab lab]. 
@@ -9,6 +9,11 @@ CareRobots is an OpenSoruce project developed by [Fab Lab UTFSM](http://fablab.u
 We aim to build low cost telepresence robots, that can be build in any Fab Lab/Makerspace around the world, this robot are intented to protect healthcare service personnel from the COVID-19 spread from infected patients. 
 
 ## Structure
+
+![image alt >](/estructura.jpeg")
+![image alt <](/estructura.jpeg")
+![image alt ><](/estructura.jpeg")
+
 <p align="right">
   <img width="460" height="300" src="Images/estructura.jpeg">
 <p>
