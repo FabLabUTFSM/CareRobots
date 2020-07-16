@@ -10,16 +10,14 @@ We aim to build low cost telepresence robots, that can be build in any Fab Lab/M
 
 ## Structure
 
-<img style="float: right;" src="Images/estructura.jpeg" width=300>
-<img style="float: left;" src="Images/estructura.jpeg" width=300>
-<img style="float: center;" src="Images/estructura.jpeg" width=300>
 
-<p align="right">
-  <img width="460" height="300" src="Images/estructura.jpeg">
+
+<p align="left">
+  <img width="200" src="Images/estructura.jpeg">
 <p>
 
 <p align="center">
-    <img src="Images/estructura.jpeg" width=600  >
+    <img src="Images/estructura.jpeg" width=200  >
 <p>
 
  <img src="Images/estructura2.jpeg" width=600  >
