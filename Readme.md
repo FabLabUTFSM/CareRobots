@@ -1,44 +1,3 @@
-.wrapper {
-    display: grid;
-    grid-auto-flow: column;  
-}
-
-.box {
-    align-self: center;
-}
-
-/* Additional styles below */
-
-.wrapper {
-  grid-gap: 10px;
-  background-color: #fff;
-  color: #444;
-}
-
-.box {
-    background-color: #444;
-    color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 150%;
-}
-
-body {
-  margin: 40px;
-}
-  
-.box.a {
-     height: 200px;
-}
-    
-.box.b {
-  height: 20px;
-}
-
-.box.c {
-  height: 120px;
-}
-
 # CareRobots
 
 <p align="center">
@@ -92,8 +51,8 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 
 ### 3D Printed - Gimbal
 
-<img src="Images/gimbal1.jpeg" width=600  >
-<img src="Images/gimbal2.jpeg" width=600  >
+<img src="Images/gimbal1.jpeg" width=200  >
+<img src="Images/gimbal2.jpeg" width=200  >
 
 |Part Name   |Number of parts   | Download Link |
 | :-:   | :-: |  :-: |
