@@ -1,8 +1,43 @@
-<div class="wrapper">
-    <div class="box a">A</div>
-    <div class="box b">B</div>
-    <div class="box c">C</div>
-</div>
+.wrapper {
+    display: grid;
+    grid-auto-flow: column;  
+}
+
+.box {
+    align-self: center;
+}
+
+/* Additional styles below */
+
+.wrapper {
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+}
+
+.box {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+}
+
+body {
+  margin: 40px;
+}
+  
+.box.a {
+     height: 200px;
+}
+    
+.box.b {
+  height: 20px;
+}
+
+.box.c {
+  height: 120px;
+}
 
 # CareRobots
 
