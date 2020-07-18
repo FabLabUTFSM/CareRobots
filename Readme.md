@@ -27,7 +27,7 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 |  B3 | 1  |  [link](https://drive.google.com/file/d/1nL7G1LNKwou2jkkLmy965ZC8Md9wTHIw/view?usp=sharing) |
 |  Bat | 1  |  [link](https://drive.google.com/file/d/17oT4-NMZ_uCZ2WhJEKf6BcBfo7XZ6th5/view?usp=sharing) |
 |  L_v2 | 3  |  [link](https://drive.google.com/file/d/1hJeNZyvru78oPO08zw2eOO0yUmgKt_Df/view?usp=sharing) |
-|  M | 1  |  [link](https://drive.google.com/file/d/12ri8eZTseVjtSSoXTZQLDR91Xk1uGaeo/view?usp=sharing) |
+|  M | 3  |  [link](https://drive.google.com/file/d/12ri8eZTseVjtSSoXTZQLDR91Xk1uGaeo/view?usp=sharing) |
 
 ### Laser Cutted - Structure
 
@@ -75,6 +75,18 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 | DC - DC 5Amp Buck converter | 1  | $6.69 |  [link](https://www.amazon.com/-/es/DZS-Elec-Step-down-Regulator-Converter/dp/B07BDDMGLG/ref=sr_1_42?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=stepdown+arduino&qid=1594755241&sr=8-42) |
 | 12V Battery conector | 1  | $7.99 |  [link](https://www.amazon.com/-/es/KASSupply-Connector-Disconnect-Terminals-Connection/dp/B07M5M8ZCG/ref=bmx_10?_encoding=UTF8&pd_rd_i=B07M5M8ZCG&pd_rd_r=6c7c81cb-37f0-4353-9c8a-7bd4b10f2eeb&pd_rd_w=SVysQ&pd_rd_wg=QSzcm&pf_rd_p=72f29bc1-c160-4012-b633-f54cb49b9557&pf_rd_r=2E8Y03Z7MB76D1S6Q47N&psc=1&refRID=2E8Y03Z7MB76D1S6Q47N) |
 | Battery charger | 1  | $10.66 |  [link]( https://www.amazon.com/-/es/Sealed-Lead-Battery-Charger-D1724/dp/B001G8AIMU/ref=bmx_1/147-5340813-4688129?_encoding=UTF8&pd_rd_i=B001G8AIMU&pd_rd_r=6c7c81cb-37f0-4353-9c8a-7bd4b10f2eeb&pd_rd_w=SVysQ&pd_rd_wg=QSzcm&pf_rd_p=72f29bc1-c160-4012-b633-f54cb49b9557&pf_rd_r=2E8Y03Z7MB76D1S6Q47N&psc=1&refRID=2E8Y03Z7MB76D1S6Q47N ) |
+| Thread M5x250  | 3  | $0.7***|  [link]( https://www.amazon.com/-/es/uxcell-150mm-Stainless-Threaded-Hardware/dp/B01M5DGV0P/ref=sr_1_2?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=varilla+roscada+m5&qid=1595109863&sr=8-2) |
+| Screw M5x25 | 6  | $0.19* |  [link]( https://www.mcmaster.com/screws/rounded-head-screws/hex-drive-rounded-head-screws/metric-316-stainless-steel-button-head-hex-drive-screws/) |
+| Screw M5x16 | 6  | $0.17* |  [link](https://www.mcmaster.com/screws/rounded-head-screws/hex-drive-rounded-head-screws/metric-316-stainless-steel-button-head-hex-drive-screws/ ) |
+| Screw M4x16 | 6  | $0.08** |  [link](https://www.mcmaster.com/screws/rounded-head-screws/hex-drive-rounded-head-screws/metric-316-stainless-steel-button-head-hex-drive-screws/ ) |
+| Screw M3x16 | 38  | $0.05** |  [link](https://www.mcmaster.com/screws/rounded-head-screws/hex-drive-rounded-head-screws/metric-316-stainless-steel-button-head-hex-drive-screws/ ) |
+| M5 nut | 24  | $0.06** |  [link](https://www.mcmaster.com/nuts/hex-nuts/metric-18-8-stainless-steel-hex-nuts/ ) |
+| M4 nut | 3  | $0.06** |  [link](https://www.mcmaster.com/nuts/hex-nuts/metric-18-8-stainless-steel-hex-nuts/ ) |
+| M3 nut | -  | $0.06** |  [link](https://www.mcmaster.com/nuts/hex-nuts/metric-18-8-stainless-steel-hex-nuts/ ) |
+| M3 Set Screw | 6  | $0.1* |  [link](https://www.mcmaster.com/nuts/hex-nuts/metric-18-8-stainless-steel-hex-nuts/ ) |
+* 50 unit package
+** 100 unit package
+*** 10 unit package
 
 ## Assembly
 
