@@ -42,6 +42,8 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 
 ### 3D Printed - Gimbal
 
+** Do not build write away, the structure is being tested in Fab Lab UTFSM, uptdates will be posted **
+
 <p align="center">
 <img src="Images/gimbal1.jpeg" width=350  > <img src="Images/gimbal2.jpeg" width=350  >
 </p>
@@ -84,9 +86,9 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 | M4 nut | 3  | $0.06** |  [link](https://www.mcmaster.com/nuts/hex-nuts/metric-18-8-stainless-steel-hex-nuts/ ) |
 | M3 nut | -  | $0.06** |  [link](https://www.mcmaster.com/nuts/hex-nuts/metric-18-8-stainless-steel-hex-nuts/ ) |
 | M3 Set Screw | 6  | $0.1* |  [link](https://www.mcmaster.com/nuts/hex-nuts/metric-18-8-stainless-steel-hex-nuts/ ) |
-* 50 unit package
-** 100 unit package
-*** 10 unit package
+*50 unit package
+**100 unit package
+***10 unit package
 
 ## Assembly
 
