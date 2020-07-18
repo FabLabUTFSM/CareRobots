@@ -42,7 +42,7 @@ In order to make CareRobots easy to fabricate in any Fab Lab/Makerspace in the w
 
 ### 3D Printed - Gimbal
 
-__Do not build write away, the structure is being tested in Fab Lab UTFSM, uptdates will be posted__
+__Do not build right away, the structure is being tested in Fab Lab UTFSM, uptdates will be posted__
 
 <p align="center">
 <img src="Images/gimbal1.jpeg" width=350  > <img src="Images/gimbal2.jpeg" width=350  >
