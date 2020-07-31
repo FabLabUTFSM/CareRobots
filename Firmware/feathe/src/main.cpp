@@ -1,16 +1,29 @@
 #include <Arduino.h>
 #include <wifi.h>
-#include <ArduinoJson.h>
+#include <ArduinoJson.h>// v6 library
+#include<HTTPClient.h>
 
 // WiFi Config
 char ssid[] = "MIT";
 //char pass[] =; //Uncomment to set the network password
 int status = WL_IDLE_STATUS;
+bool conection;
+WiFiClient client;
+char server[]= "http://arduinojson.org/example.json"; //website where json comes
 
 //Json parameters
-const size_t capacity = JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(2) + 30;
-StaticJsonBuffer<capacity> jsonBuffer;
+//const size_t capacity = JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(2) + 30; //json format {"direction": String, "speed":[int motor1, int motor2, int motor3]}
+const size_t capacity = JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(3) + 30; //json test
+StaticJsonDocument<capacity> doc;
 
+void getjson(){
+  HTTPClient http;
+  http.begin("http://arduinojson.org/example.json");
+  http.GET();
+  doc.clear();
+  deserializeJson(doc, http.getStream());
+  http.end();  
+}
 
  
 void setup() {
@@ -25,7 +38,7 @@ void setup() {
       status = WiFi.begin(ssid);
 
       // wait 10 seconds for connection:
-      delay(10000);
+      delay(1000);
   }
   if (status== WL_CONNECT_FAILED){
     Serial.println("Unable to connect to WiFi");
@@ -38,6 +51,6 @@ void setup() {
 }
 
 void loop() {
-  delay(1000);
-  //Serial.println("Holi!");
+  getjson();
+  Serial.println(doc["time"].as<long>());
 }
