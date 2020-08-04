@@ -4,21 +4,21 @@
 #include<HTTPClient.h>
 
 // WiFi Config
-char ssid[] = "MIT";
+char ssid[] = "MIT"; //WiFi network name
 //char pass[] =; //Uncomment to set the network password
 int status = WL_IDLE_STATUS;
 bool conection;
 WiFiClient client;
-char server[]= "http://arduinojson.org/example.json"; //website where json comes
+char server[]= "http://localhost:3000/posts"; //website where json comes
 
 //Json parameters
-//const size_t capacity = JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(2) + 30; //json format {"direction": String, "speed":[int motor1, int motor2, int motor3]}
+//const size_t capacity = JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(2) + 30; //json format {"robot id": int code number, "direction": String "direction", "speed":[int motor1, int motor2, int motor3]}
 const size_t capacity = JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(3) + 30; //json test
 StaticJsonDocument<capacity> doc;
 
 void getjson(){
   HTTPClient http;
-  http.begin("http://arduinojson.org/example.json");
+  http.begin(server);
   http.GET();
   doc.clear();
   deserializeJson(doc, http.getStream());
