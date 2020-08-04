@@ -13,7 +13,7 @@ char server[]= "http://localhost:3000/posts/1"; //website where json comes
 
 //Json parameters
 //const size_t capacity = JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(2) + 30; //json format {"robot id": int code number, "direction": String "direction", "speed":[int motor1, int motor2, int motor3]}
-const size_t capacity = JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(3) + 30; //json test
+const size_t capacity = JSON_OBJECT_SIZE(3) + 50;; //json test
 StaticJsonDocument<capacity> doc;
 
 void getjson(){
