@@ -28,9 +28,9 @@ El orden de los motores y de los movimientos se puede ver en el siguiente dibujo
 
 De los movimientos detallados en el dibujo solo estan habilitados el movimiento hacia adelante y atras y giros derecha e izquierda, ya que coinsidere que estos son los 4 esenciales de los 6 posibles. 
 
-## SObre el Ensamble
+## Sobre el Ensamble
 
-Por favor documenten bien, esto es muy importante si queremos trabajar de forma distribuida, tomen fotos de *TODO!!!!!!*: 
+Por favor documenten bien, esto es muy importante si queremos trabajar de forma distribuida, tomen fotos de **TODO!!!!!!**: 
 
 - Fotos de las piezas antes de ensamblar
 <img src="Images/documentacion1.png" width=600  >
@@ -49,6 +49,6 @@ Por favor documenten bien, esto es muy importante si queremos trabajar de forma 
 
 Videos de la contruccion de los sistemas tambien son muy utiles!!!
 
-*Esto para todos los sistemas y subsistemas*
+**Esto para todos los sistemas y subsistemas**
 
 Por favor, cada segundo invertido en buena documentacion es un segundo ganado en replicabilidad del proyecto y por ende un segundo ganado en el desarrollo de los robots. 
