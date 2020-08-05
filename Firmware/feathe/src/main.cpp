@@ -1,56 +1,82 @@
 #include <Arduino.h>
-#include <wifi.h>
-#include <ArduinoJson.h>// v6 library
-#include<HTTPClient.h>
+#include "BluetoothSerial.h"
 
-// WiFi Config
-char ssid[] = "MIT"; //WiFi network name
-//char pass[] =; //Uncomment to set the network password
-int status = WL_IDLE_STATUS;
-bool conection;
-WiFiClient client;
-char server[]= "http://localhost:3000/posts/1"; //website where json comes
+#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
+#error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
+#endif
 
-//Json parameters
-//const size_t capacity = JSON_ARRAY_SIZE(3) + JSON_OBJECT_SIZE(2) + 30; //json format {"robot id": int code number, "direction": String "direction", "speed":[int motor1, int motor2, int motor3]}
-const size_t capacity = JSON_OBJECT_SIZE(3) + 50;; //json test
-StaticJsonDocument<capacity> doc;
+BluetoothSerial SerialBT;
 
-void getjson(){
-  HTTPClient http;
-  http.begin(server);
-  http.GET();
-  doc.clear();
-  deserializeJson(doc, http.getStream());
-  http.end();  
+//Motor pin
+int motor[]= {12,27,33,15,32,14};
+
+void forward(){
+    digitalWrite(motor[1],HIGH);
+    digitalWrite(motor[2],HIGH); 
+    delay(1000);
+  return;
 }
 
- 
-void setup() {
-  //Serial setup
-  Serial.begin(9600);
-  //WiFi setup
-  WiFi.begin(ssid); //Uncomment if the wifi network doesn't have a password
-  //WiFi.begin(ssid,pass); //Uncomment if the wifi network has a password
-  while ( status != WL_CONNECTED) {
-      Serial.print("Attempting to connect to WEP network, SSID: ");
-      Serial.println(ssid);
-      status = WiFi.begin(ssid);
+void backward(){
+  digitalWrite(motor[0],HIGH);
+  digitalWrite(motor[3],HIGH); 
+  Serial.println("backward");
+  delay(1000);
+return;
+}
 
-      // wait 10 seconds for connection:
-      delay(1000);
-  }
-  if (status== WL_CONNECT_FAILED){
-    Serial.println("Unable to connect to WiFi");
-  }
-  else
+void cw(){
+  digitalWrite(motor[0],HIGH);
+  digitalWrite(motor[2],HIGH);
+  digitalWrite(motor[4],HIGH); 
+  delay(1000); 
+return;
+}
+
+void ccw(){
+  digitalWrite(motor[1],HIGH);
+  digitalWrite(motor[3],HIGH);
+  digitalWrite(motor[5],HIGH);  
+  delay(1000);
+return;
+}
+
+void move(char c){
+  switch (c)
   {
-    Serial.print("Conected to: ");
-    Serial.println(ssid);
+    case 'f':
+      forward();
+      break;
+    case 'b':
+      backward();
+      break;
+    case 'r':
+      cw();
+      break;
+    case 'l':
+      ccw();
+      break;
+    default:
+      break;
+    }
+  return;
+}
+void setup() {
+  Serial.begin(9600);
+  SerialBT.begin("ESP32test"); //Bluetooth device name
+  Serial.println("The device started, now you can pair it with bluetooth!");
+  for (int i =0; i < sizeof(motor)-1; i++){
+    pinMode(motor[i],OUTPUT);
   }
 }
 
 void loop() {
-  getjson();
-  Serial.println(doc["time"].as<long>());
+  if (SerialBT.available()) {
+    char c = SerialBT.read();
+    Serial.println(c);
+    move(c);
+  }
+  for (int i =0; i < sizeof(motor)-1; i++){
+    digitalWrite(motor[i],LOW);
+  }
 }
