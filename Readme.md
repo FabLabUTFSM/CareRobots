@@ -28,6 +28,17 @@ El orden de los motores y de los movimientos se puede ver en el siguiente dibujo
 
 De los movimientos detallados en el dibujo solo estan habilitados el movimiento hacia adelante y atras y giros derecha e izquierda, ya que coinsidere que estos son los 4 esenciales de los 6 posibles. 
 
+## Comunicacion
+
+La comunicacion usuario - robot se establece a traves de bluetooth, para esto podemos utilizar el terminal de serie del IDE de Arduino, o apps de terminal serial para el celular. Para el celular, yo probe [Serial Bluetooth Terminal](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&hl=es_US). 
+
+Para mover el robot, seguir los siguientes comandos: 
+
+- Forward ==> f
+- Backward ==> b
+- Right ==> r
+- Left ==> l
+
 ## Sobre el Ensamble
 
 Por favor documenten bien, esto es muy importante si queremos trabajar de forma distribuida, tomen fotos de **TODO!!!!!!**: 
