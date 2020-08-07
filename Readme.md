@@ -36,8 +36,11 @@ Para mover el robot, seguir los siguientes comandos:
 
 - Forward ==> f
 - Backward ==> b
-- Right ==> r
-- Left ==> l
+- Paralel Right ==> r
+- Paralel Left ==> l
+- Rotacion derecha (clockwise) ==> d
+- Rotacion derecha (counterclockwise) ==> i
+
 
 ## Sobre el Ensamble
 
