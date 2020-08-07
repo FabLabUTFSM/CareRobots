@@ -65,10 +65,10 @@ void move(char c){
     case 'b':
       backward();
       break;
-    case 'rr':
+    case 'd':
       cw();
       break;
-    case 'rl':
+    case 'i':
       ccw();
       break;
       case 'l':
