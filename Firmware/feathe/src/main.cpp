@@ -10,6 +10,21 @@ BluetoothSerial SerialBT;
 //Motor pin
 int motor[]= {12,27,33,15,32,14};
 
+void right(){
+    digitalWrite(motor[0],HIGH);
+    digitalWrite(motor[2],HIGH);
+    digitalWrite(motor[4],HIGH); 
+    delay(1000);
+  return;
+}
+
+void right(){
+    digitalWrite(motor[1],HIGH);
+    digitalWrite(motor[3],HIGH);
+    digitalWrite(motor[5],HIGH); 
+    delay(1000);
+  return;
+}
 void forward(){
     digitalWrite(motor[1],HIGH);
     digitalWrite(motor[2],HIGH); 
@@ -50,11 +65,17 @@ void move(char c){
     case 'b':
       backward();
       break;
-    case 'r':
+    case 'rr':
       cw();
       break;
-    case 'l':
+    case 'rl':
       ccw();
+      break;
+      case 'l':
+      left();
+      break;
+      case 'r':
+      right();
       break;
     default:
       break;
