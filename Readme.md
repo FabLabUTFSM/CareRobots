@@ -19,6 +19,8 @@ Currently there are 3 firmware options, wich diferenciate the board or the comun
 ### ESP8266
 - [WiFi](https://github.com/FabLabUTFSM/CareRobots/blob/wifi-ESP8266/Firmware/feathe/src/main.cpp)
 
+### Libraries
+
 If you are downloading the softwares directlly you hace to coinsider that they are coded using [Platformio](https://platformio.org/), if you are using the Arduino IDE, you will only need the .cpp file (if you fill is more comftable, you can change the extension to .ino), and download the following libraries: 
 
 #### ESP32 - Bluetooth
