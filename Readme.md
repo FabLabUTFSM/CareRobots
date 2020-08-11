@@ -4,9 +4,38 @@
   <img width="400"  src="Images/care robots logo BONUS 1.png">
 </p>
 
-CareRobots is an OpenSoruce project developed by [Fab Lab UTFSM](http://fablab.usm.cl/), [LightHouse-DIG](https://lighthouse-dig.com/), [Center for Engineering Education and Outreach](https://ceeo.tufts.edu/) and [Marionas fab lab]. 
+CareRobots is an OpenSoruce project developed by [Fab Lab UTFSM](http://fablab.usm.cl/), [LightHouse-DIG](https://lighthouse-dig.com/), [Center for Engineering Education and Outreach](https://ceeo.tufts.edu/) and [Soko Tech](https://soko.tech/). 
 
 We aim to build low cost telepresence robots, that can be build in any Fab Lab/Makerspace around the world, this robot are intented to protect healthcare service personnel from the COVID-19 spread from infected patients. 
+
+## Firmware
+
+Currently there are 3 firmware options, wich diferenciate the board or the comunication method. All of this codes can be downloaded from its specific branch, or in the following links: 
+
+### ESP32
+- [Bluetooth](https://github.com/FabLabUTFSM/CareRobots/blob/bluetooth-ESP32/Firmware/feathe/src/main.cpp)
+- [WiFi](https://github.com/FabLabUTFSM/CareRobots/blob/wifi-ESP32/Firmware/feathe/src/main.cpp)
+
+### ESP8266
+- [WiFi](https://github.com/FabLabUTFSM/CareRobots/blob/wifi-ESP8266/Firmware/feathe/src/main.cpp)
+
+If you are downloading the softwares directlly you hace to coinsider that they are coded using [Platformio](https://platformio.org/), if you are using the Arduino IDE, you will only need the .cpp file (if you fill is more comftable, you can change the extension to .ino), and download the following libraries: 
+
+#### ESP32 - Bluetooth
+- [BluetoothSerial](https://github.com/espressif/arduino-esp32/tree/master/libraries/BluetoothSerial)
+
+#### ESP32 - WiFi
+- [WebServer](https://github.com/espressif/arduino-esp32/tree/master/libraries/WebServer)
+
+#### ESP8266 - WiFi
+- [ESP8266WiFi](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi)
+- [ESP8266mDNS](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266mDNS)
+- [ESP8266WebServer](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WebServer)
+
+### Install NodeMCU in Arduino IDE
+
+To install the NodeMCU in the Arduino IDE, you can follow the following [instructions](https://www.instructables.com/id/Quick-Start-to-Nodemcu-ESP8266-on-Arduino-IDE/). 
+
 
 ## Structure
 
