@@ -3,7 +3,7 @@
 
 WebServer server(80);    // Create a webserver object that listens for HTTP request on port 80
 
-const int pinMotor[]= {12,27,33,15,32,14};
+const int pinMotor[]= {12,27,33,15,32,14};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
 
 
 const char* ssid = "MIT";  // Enter SSID here
@@ -96,6 +96,48 @@ void loop(void){
   server.handleClient();                  // Listen for HTTP requests from clients
 }
 
+void forward(){
+  moveMotor(1,"CCW");
+  moveMotor(2,"CW");
+  moveMotor(3,"Off");
+}
+
+void left(){
+  moveMotor(1,"CCW");
+  moveMotor(2,"CCW");
+  moveMotor(3,"CW");
+}
+
+void right(){
+  moveMotor(1,"CW");
+  moveMotor(2,"CW");
+  moveMotor(3,"CCW");
+}
+
+void down(){
+  moveMotor(1,"CW");
+  moveMotor(2,"CCW");
+  moveMotor(3,"Off");
+}
+
+void stop(){
+  moveMotor(1,"Off");
+  moveMotor(2,"Off");
+  moveMotor(3,"Off");
+}
+
+void CW(){
+  moveMotor(1,"CW");
+  moveMotor(2,"CW");
+  moveMotor(3,"CW");
+}
+
+void CCW(){
+  moveMotor(1,"CCW");
+  moveMotor(2,"CCW");
+  moveMotor(3,"CCW");
+}
+
 void moveMotor(int motor, String direction){
   switch (motor){
     case 1:
@@ -173,55 +215,41 @@ void handleRoot() {                         // When URI / is requested, send a w
 }
 
 void handleUP() {                          // If a POST request is made to URI /LED
-  moveMotor(1,"CCW");
-  moveMotor(2,"CW");
-  moveMotor(3,"Off");
+  forward();
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
 
 void handleLEFT() {                          // If a POST request is made to URI /LED
-  moveMotor(1,"CCW");
-  moveMotor(2,"CCW");
-  moveMotor(3,"CW");
+  left();
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
 void handleRIGHT() {                          // If a POST request is made to URI /LED
-  moveMotor(1,"CW");
-  moveMotor(2,"CW");
-  moveMotor(3,"CCW");
+  right();
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
 void handleDOWN() {                          // If a POST request is made to URI /LED
-  moveMotor(1,"CW");
-  moveMotor(2,"CCW");
-  moveMotor(3,"Off");
+  down();
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
 
 void handleSTOP() {                          // If a POST request is made to URI /LED
-  moveMotor(1,"Off");
-  moveMotor(2,"Off");
-  moveMotor(3,"Off");
+  stop();
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
 
 void handleCW() {                          // If a POST request is made to URI /LED
-  moveMotor(1,"CW");
-  moveMotor(2,"CW");
-  moveMotor(3,"CW");
+  CW();
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
 
 void handleCCW() {                          // If a POST request is made to URI /LED
-  moveMotor(1,"CCW");
-  moveMotor(2,"CCW");
-  moveMotor(3,"CCW");
+  CCW();
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
