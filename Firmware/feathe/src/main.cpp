@@ -63,8 +63,9 @@ void setup(void){
   delay(10);
   Serial.println('\n');
 
-  //connect to your local wi-fi network
+  //connect to your local wi-fi network, Uncomment if the wifi has password or not. 
   WiFi.begin(ssid);
+  //WiFi.begin(ssid,password); 
 
   //check wi-fi is connected to wi-fi network
   while (WiFi.status() != WL_CONNECTED) {
@@ -96,6 +97,7 @@ void loop(void){
   server.handleClient();                  // Listen for HTTP requests from clients
 }
 
+//Standar functions for bluetooth and WiFi
 void forward(){
   moveMotor(1,"CCW");
   moveMotor(2,"CW");
@@ -209,6 +211,8 @@ void moveMotor(int motor, String direction){
   }
 
 }
+
+//Functions fo HTML comunication
 
 void handleRoot() {                         // When URI / is requested, send a web page with a button to toggle the LED
   server.send(200, "text/html", getPage());
