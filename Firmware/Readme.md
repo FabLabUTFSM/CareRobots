@@ -7,7 +7,7 @@ This code, suposed to be the most usefull, it he Wifi for ESP32 code.
 The motor asociated pins are intended to work for the following conection: 
 
 <p align="center">
-  <img width="400"  src="Images/Fritizing.png">
+  <img width="400"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/Fritizing.png">
 </p>
 
 If you are using a diferent board, or diferents pins, change the pinMotor array in line 6: 
@@ -45,19 +45,20 @@ If your wifi doesnt have a password just comment that line and define the type o
 Por favor documenten bien, esto es muy importante si queremos trabajar de forma distribuida, tomen fotos de **TODO!!!!!!**: 
 
 - Fotos de las piezas antes de ensamblar
-<img src="Images/documentacion1.png" width=600  >
+
+<img src="https://github.com/FabLabUTFSM/CareRobots/blob/wifi-ESP32/Images/documentacion1.png" width=600  >
 
 - Fotos de los sistemas durante el ensamble:
 
-<img src="Images/documentacion2.png" width=600  >
+<img src="https://github.com/FabLabUTFSM/CareRobots/blob/wifi-ESP32/Images/documentacion2.png" width=600  >
 
 - Fotos de medidas o pasos claves
 
-<img src="Images/documentacion3.png" width=600  >
+<img src="https://github.com/FabLabUTFSM/CareRobots/blob/wifi-ESP32/Images/documentacion3.png" width=600  >
 
 - Fotos del sistema ensamblado y funcionando: 
 
-<img src="Images/documentacion4.png" width=600  >
+<img src="https://github.com/FabLabUTFSM/CareRobots/blob/wifi-ESP32/Images/documentacion4.png" width=600  >
 
 Videos de la contruccion de los sistemas tambien son muy utiles!!!
 
