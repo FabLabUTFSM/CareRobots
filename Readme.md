@@ -16,6 +16,16 @@ Currently there are 3 firmware options, wich diferenciate the board or the comun
 - [Bluetooth](https://github.com/FabLabUTFSM/CareRobots/blob/bluetooth-ESP32/Firmware/feathe/src/main.cpp)
 - [WiFi](https://github.com/FabLabUTFSM/CareRobots/blob/wifi-ESP32/Firmware/feathe/src/main.cpp)
 
+Fab Lab UTFSM is currently first prototype was built using the ESP32 30 pin board [DOIT WROOM ESP32](https://afel.cl/producto/placa-desarrollo-doit-wroom-32-bluetooth-wifi/). 
+
+The following image shows the conections we have made: 
+
+<p align="center">
+  <img width="400"  src="Images/Fritizing.png">
+</p>
+
+
+
 ### ESP8266
 - [WiFi](https://github.com/FabLabUTFSM/CareRobots/blob/wifi-ESP8266/Firmware/feathe/src/main.cpp)
 
