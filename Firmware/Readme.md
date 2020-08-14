@@ -34,7 +34,13 @@ If your wifi doesnt have a password just comment that line and define the type o
 ## To do
 
 ### Firmware
-- Include enable pins
+- First tets. 
+
+The omniwheels where designed using the following structure: 
+
+<p align="center">
+  <img width="400"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/Omniwheel.jpg">
+</p>
 
 ### Hardware
 - Find or desing a charge circuit for the battery
