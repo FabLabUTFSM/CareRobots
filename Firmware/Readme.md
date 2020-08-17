@@ -1,6 +1,6 @@
 # ESP-32 Wifi Firmware information
 
-This code, suposed to be the most usefull, it he Wifi for ESP32 code. 
+This code, suposed to be the most usefull, it he Wifi for ESP32 code, the current version is built for the [ESP-WROOM-32 32 Pins board](https://www.amazon.com/-/es/KeeYees-Development-Bluetooth-Microcontroller-ESP-WROOM-32/dp/B07QCP2451/ref=sr_1_1?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=ESP-WROOM-32+32+Pins+board&qid=1597701582&sr=8-1). 
 
 ## Hardware conections: 
 
@@ -9,6 +9,21 @@ The motor asociated pins are intended to work for the following conection:
 <p align="center">
   <img width="400"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/Fritizing.png">
 </p>
+
+## ESP32 pin selection
+
+It is important to coinsider that ESP32 is pin sensitive. Eventhough pins are GPIO (General Purpose) not of them fit every use. 
+
+First coinsider the following pinmap: 
+<p align="center">
+  <img width="400"  src="https://components101.com/microcontrollers/esp32-devkitc">
+</p>
+
+Wich shows with pins have an ADC, PWM function (all pins in ESP32 are PWM), etc. 
+
+At the moment of choosing each pin, you **MUST** coinsider the following recomendation from [ESP easy](https://espeasy.readthedocs.io/en/latest/Reference/GPIO.html#best-pins-to-use-on-esp32): 
+
+
 
 If you are using a diferent board, or diferents pins, change the pinMotor array in line 6: 
 
@@ -24,19 +39,25 @@ To enable the board to connect to your wifi network, modify the lines 9 and 10:
     const char* ssid = "MIT";  // Enter SSID here
     const char* password = " YourPassword";  //Enter Password here
 ```
-If your wifi doesnt have a password just comment that line and define the type of wifi you will use:
+If your wifi doesn't have a password just comment that line and define the type of wifi you will use:
 
 ```
   WiFi.begin(ssid);
   //WiFi.begin(ssid,password); 
 ```
+If the speed of the robot doesn't adjust to your requierment, you can change the variable 
+
+```
+const int motorSpeed = 10;
+```
+
+Upwards is faster and downwards is slower. 
 
 ## To do
 
 ### Firmware
-- WiFi rune only in local network.
-- Revisar funcion off
-- New pin set, witrh PWM pin to regulate speed. 
+- WiFi rune only in local network. **(it seems to be a problem with leo's board)**
+- New pin set, witrh PWM pin to regulate speed. Rev1: Motor speed variable added at minimun speed. 
 
 The omniwheels where designed using the following structure: 
 

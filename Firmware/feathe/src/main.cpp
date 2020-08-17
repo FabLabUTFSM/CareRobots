@@ -9,6 +9,7 @@ const int pinMotor[]= {2,0,4,16,18,19};// {moto1CW,motor1CCW,moto2CW,motor2CCW,m
 const int pinEnable[]={15,17,5};
 //const int pinEnable[]={21,27,34};
 
+const int motorSpeed = 10;
 
 const char* ssid = "MIT";  // Enter SSID here
 //const char* password = " YourPassword";  //Enter Password here
@@ -147,7 +148,7 @@ void CCW(){
 void moveMotor(int motor, String direction){
   switch (motor){
     case 1:
-      digitalWrite(pinEnable[0],HIGH);
+      analogWrite(pinEnable[0],motorSpeed);
       if(direction == "CCW"){
         digitalWrite(pinMotor[0],LOW);
         digitalWrite(pinMotor[1],HIGH);
@@ -171,7 +172,7 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 2: 
-      digitalWrite(pinEnable[1],HIGH);
+      analogWrite(pinEnable[1],motorSpeed);
       if(direction == "CCW"){
         digitalWrite(pinMotor[2],LOW);
         digitalWrite(pinMotor[3],HIGH);
@@ -190,12 +191,12 @@ void moveMotor(int motor, String direction){
         digitalWrite(pinEnable[1],LOW);
         digitalWrite(pinMotor[2],LOW);
         digitalWrite(pinMotor[3],LOW);
-        Serial.print("Motor1: ");
+        Serial.print("Motor2: ");
         Serial.println("Off");
       }
       break;
     case 3:
-      digitalWrite(pinEnable[2],HIGH);
+      analogWrite(pinEnable[2],motorSpeed);
       if(direction == "CCW"){
         digitalWrite(pinMotor[4],LOW);
         digitalWrite(pinMotor[5],HIGH);
@@ -214,7 +215,7 @@ void moveMotor(int motor, String direction){
         digitalWrite(pinEnable[1],LOW);
         digitalWrite(pinMotor[4],LOW);
         digitalWrite(pinMotor[5],LOW);
-        Serial.print("Motor1: ");
+        Serial.print("Motor3: ");
         Serial.println("Off");
       }
       break;
