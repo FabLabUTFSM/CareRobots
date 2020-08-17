@@ -45,7 +45,8 @@ The omniwheels where designed using the following structure:
 ### Hardware
 - Find or desing a charge circuit for the battery  [reference](https://www.amazon.com/Battery-Controller-Protection-Digital-Display/dp/B07415C9VJ/ref=asc_df_B07415C9VJ/?tag=hyprod-20&linkCode=df0&hvadid=316620274234&hvpos=&hvnetw=g&hvrand=1440459751665623902&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9061331&hvtargid=pla-613182190031&th=1)
 - Design a better layout for the board
-- Design enclosure for circuits (Faraday cage)
+- Design enclosure for circuits (Faraday cage).
+- Fritzing ==> 32pin EPS32
 
 ## Sobre el Ensamble
 
