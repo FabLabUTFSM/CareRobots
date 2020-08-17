@@ -34,7 +34,7 @@ If your wifi doesnt have a password just comment that line and define the type o
 ## To do
 
 ### Firmware
-- First test 
+- WiFi rune only in local network.
 
 The omniwheels where designed using the following structure: 
 
