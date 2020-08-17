@@ -34,7 +34,7 @@ If your wifi doesnt have a password just comment that line and define the type o
 ## To do
 
 ### Firmware
-- First tets. 
+- First test 
 
 The omniwheels where designed using the following structure: 
 
@@ -43,8 +43,9 @@ The omniwheels where designed using the following structure:
 </p>
 
 ### Hardware
-- Find or desing a charge circuit for the battery
-- Design a beter layout for the board
+- Find or desing a charge circuit for the battery  [reference](https://www.amazon.com/Battery-Controller-Protection-Digital-Display/dp/B07415C9VJ/ref=asc_df_B07415C9VJ/?tag=hyprod-20&linkCode=df0&hvadid=316620274234&hvpos=&hvnetw=g&hvrand=1440459751665623902&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9061331&hvtargid=pla-613182190031&th=1)
+- Design a better layout for the board
+- Design enclosure for circuits (Faraday cage)
 
 ## Sobre el Ensamble
 
