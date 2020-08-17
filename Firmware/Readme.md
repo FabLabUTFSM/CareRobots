@@ -17,7 +17,7 @@ It is important to coinsider that ESP32 is pin sensitive. Eventhough pins are GP
 First coinsider the following pinmap: 
 
 <p align="center">
-  <img width="600"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/ESP32-Pinout.png">
+  <img width="800"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/ESP32-Pinout.png">
 </p>
 
 Wich shows with pins have an ADC, PWM function (all pins in ESP32 are PWM), etc.
@@ -25,7 +25,7 @@ Wich shows with pins have an ADC, PWM function (all pins in ESP32 are PWM), etc.
 At the moment of choosing each pin, you **MUST** coinsider the following recomendation from [ESP easy](https://espeasy.readthedocs.io/en/latest/Reference/GPIO.html#best-pins-to-use-on-esp32): 
 
 <p align="center">
-  <img width="600"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/esp32Pins.PNG">
+  <img width="800"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/esp32Pins.PNG">
 </p>
 
 As you can see, some pins have constrains at the moment of booting the board. 
@@ -37,7 +37,7 @@ If you are using a diferent board, or diferents pins, change the pinMotor array 
     const int pinMotor[]= {12,27,33,15,32,14};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
 ```
 
-## Wifi configuration
+## Firmware configuration
 
 To enable the board to connect to your wifi network, modify the lines 9 and 10: 
 
@@ -62,14 +62,15 @@ Upwards is faster and downwards is slower.
 ## To do
 
 ### Firmware
-- WiFi rune only in local network. **(it seems to be a problem with leo's board)**
-- New pin set, witrh PWM pin to regulate speed. Rev1: Motor speed variable added at minimun speed. 
+- WiFi run only in local network. **(it seems to be a problem with leo's board)**
+- New pin set, with PWM pin to regulate speed. Rev1: Motor speed variable added at minimun speed. 
+- Test omniwheels functions:
 
-The omniwheels where designed using the following structure: 
+  The omniwheels where designed using the following structure: 
 
-<p align="center">
-  <img width="400"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/Omniwheel.jpg">
-</p>
+    <p align="center">
+      <img width="400"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/Omniwheel.jpg">
+    </p>
 
 ### Hardware
 - Find or desing a charge circuit for the battery  [reference](https://www.amazon.com/Battery-Controller-Protection-Digital-Display/dp/B07415C9VJ/ref=asc_df_B07415C9VJ/?tag=hyprod-20&linkCode=df0&hvadid=316620274234&hvpos=&hvnetw=g&hvrand=1440459751665623902&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9061331&hvtargid=pla-613182190031&th=1)
