@@ -15,8 +15,9 @@ The motor asociated pins are intended to work for the following conection:
 It is important to coinsider that ESP32 is pin sensitive. Eventhough pins are GPIO (General Purpose) not of them fit every use. 
 
 First coinsider the following pinmap: 
+
 <p align="center">
-  <img width="400"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/ESP32-Pinout.png">
+  <img width="600"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/ESP32-Pinout.png">
 </p>
 
 Wich shows with pins have an ADC, PWM function (all pins in ESP32 are PWM), etc.
@@ -24,8 +25,11 @@ Wich shows with pins have an ADC, PWM function (all pins in ESP32 are PWM), etc.
 At the moment of choosing each pin, you **MUST** coinsider the following recomendation from [ESP easy](https://espeasy.readthedocs.io/en/latest/Reference/GPIO.html#best-pins-to-use-on-esp32): 
 
 <p align="center">
-  <img width="400"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/esp32Pins.PNG">
+  <img width="600"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/esp32Pins.PNG">
 </p>
+
+As you can see, some pins have constrains at the moment of booting the board. 
+** ESP32 can't be conected to the other parts of the circuit at the moment of booting **
 
 If you are using a diferent board, or diferents pins, change the pinMotor array in line 6: 
 
