@@ -35,6 +35,8 @@ If your wifi doesnt have a password just comment that line and define the type o
 
 ### Firmware
 - WiFi rune only in local network.
+- Revisar funcion off
+- New pin set, witrh PWM pin to regulate speed. 
 
 The omniwheels where designed using the following structure: 
 
@@ -73,3 +75,9 @@ Videos de la contruccion de los sistemas tambien son muy utiles!!!
 **Esto para todos los sistemas y subsistemas**
 
 Por favor, cada segundo invertido en buena documentacion es un segundo ganado en replicabilidad del proyecto y por ende un segundo ganado en el desarrollo de los robots. 
+
+**TroubleShoot**
+
+- Its preferable to flash the ESP32 board not conected to the pin, chinese version are not able to be flashed if conected. 
+
+
