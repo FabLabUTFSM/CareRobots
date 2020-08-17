@@ -19,11 +19,13 @@ First coinsider the following pinmap:
   <img width="400"  src="https://components101.com/microcontrollers/esp32-devkitc">
 </p>
 
-Wich shows with pins have an ADC, PWM function (all pins in ESP32 are PWM), etc. 
+Wich shows with pins have an ADC, PWM function (all pins in ESP32 are PWM), etc.
 
 At the moment of choosing each pin, you **MUST** coinsider the following recomendation from [ESP easy](https://espeasy.readthedocs.io/en/latest/Reference/GPIO.html#best-pins-to-use-on-esp32): 
 
-
+<p align="center">
+  <img width="400"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/esp32Pins.PNG">
+</p>
 
 If you are using a diferent board, or diferents pins, change the pinMotor array in line 6: 
 
