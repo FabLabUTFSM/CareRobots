@@ -3,7 +3,11 @@
 
 WebServer server(80);    // Create a webserver object that listens for HTTP request on port 80
 
-const int pinMotor[]= {12,27,33,15,32,14};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
+const int pinMotor[]= {32,33,25,26,12,13};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
+//const int pinMotor[]= {12,13,14,15,18,19};
+
+const int pinEnable[]={35,27,14};
+//const int pinEnable[]={11,16,17};
 
 
 const char* ssid = "MIT";  // Enter SSID here
@@ -143,6 +147,7 @@ void CCW(){
 void moveMotor(int motor, String direction){
   switch (motor){
     case 1:
+      digitalWrite(pinEnable[0],HIGH);
       if(direction == "CCW"){
         digitalWrite(pinMotor[0],LOW);
         digitalWrite(pinMotor[1],HIGH);
@@ -158,6 +163,7 @@ void moveMotor(int motor, String direction){
       }
       else 
       {
+        digitalWrite(pinEnable[0],LOW);
         digitalWrite(pinMotor[0],LOW);
         digitalWrite(pinMotor[1],LOW);
         Serial.print("Motor1: ");
@@ -165,6 +171,7 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 2: 
+      digitalWrite(pinEnable[1],HIGH);
       if(direction == "CCW"){
         digitalWrite(pinMotor[2],LOW);
         digitalWrite(pinMotor[3],HIGH);
@@ -179,7 +186,8 @@ void moveMotor(int motor, String direction){
         Serial.println("CW");
       }
       else 
-      {
+      {   
+        digitalWrite(pinEnable[1],LOW);
         digitalWrite(pinMotor[2],LOW);
         digitalWrite(pinMotor[3],LOW);
         Serial.print("Motor1: ");
@@ -187,6 +195,7 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 3:
+      digitalWrite(pinEnable[2],HIGH);
       if(direction == "CCW"){
         digitalWrite(pinMotor[4],LOW);
         digitalWrite(pinMotor[5],HIGH);
@@ -202,6 +211,7 @@ void moveMotor(int motor, String direction){
       }
       else 
       {
+        digitalWrite(pinEnable[1],LOW);
         digitalWrite(pinMotor[4],LOW);
         digitalWrite(pinMotor[5],LOW);
         Serial.print("Motor1: ");
