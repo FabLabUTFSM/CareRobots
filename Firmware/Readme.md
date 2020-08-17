@@ -16,7 +16,7 @@ It is important to coinsider that ESP32 is pin sensitive. Eventhough pins are GP
 
 First coinsider the following pinmap: 
 <p align="center">
-  <img width="400"  src="https://components101.com/microcontrollers/esp32-devkitc">
+  <img width="400"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/ESP32-Pinout.png">
 </p>
 
 Wich shows with pins have an ADC, PWM function (all pins in ESP32 are PWM), etc.
