@@ -67,7 +67,6 @@ Upwards is faster and downwards is slower.
 
 ### Firmware
 - Add fail after 10 iterations for wifi conection.
-- Fix analogWrite not being decleared. ==> What is analogWrite resolution?
 - Test omniwheels functions:
 
   The omniwheels where designed using the following structure: 
@@ -75,6 +74,8 @@ Upwards is faster and downwards is slower.
     <p align="center">
       <img width="400"  src="https://github.com/FabLabUTFSM/CareRobots/blob/master/Images/Omniwheel.jpg">
     </p>
+- PWM in ESP: ESP doesn't have the arduino analogWrite standar function. They have [Led Control](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/ledc.html#_CPPv413ledc_set_duty11ledc_mode_t14ledc_channel_t8uint32_t), eventhough the library [AnalogWrite.h](https://github.com/ERROPiX/ESP32_AnalogWrite) fix this issue, it increases the memory usage. 
+  - Change the code to use Led Control commands. 
 
 ### Hardware
 - Find or desing a charge circuit for the battery  [reference](https://www.amazon.com/Battery-Controller-Protection-Digital-Display/dp/B07415C9VJ/ref=asc_df_B07415C9VJ/?tag=hyprod-20&linkCode=df0&hvadid=316620274234&hvpos=&hvnetw=g&hvrand=1440459751665623902&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9061331&hvtargid=pla-613182190031&th=1)
@@ -108,9 +109,15 @@ Videos de la contruccion de los sistemas tambien son muy utiles!!!
 
 Por favor, cada segundo invertido en buena documentacion es un segundo ganado en replicabilidad del proyecto y por ende un segundo ganado en el desarrollo de los robots. 
 
-**TroubleShoot**
+
+## **TroubleShoot**
 
 - Its preferable to flash the ESP32 board not conected to the pin, chinese version are not able to be flashed if conected.
 - WiFi run only in local network: 
   - Alonos Rodriguez (Friend from IOLed team): Router firewall problem. Check port forward solution, wich will allows to comunicate directly to the router, and it will send us to the ESP32 through a local IP. 
 
+
+## Test1 19/09 - Results
+
+- Wifi works only with the local network. 
+- Doesn't work if we unpluged the ESP from the computer. 
