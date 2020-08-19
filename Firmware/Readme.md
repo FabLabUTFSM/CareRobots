@@ -59,11 +59,15 @@ const int motorSpeed = 10;
 
 Upwards is faster and downwards is slower. 
 
+## Libraries
+
+- [AnalogWrite.h](https://github.com/ERROPiX/ESP32_AnalogWrite)
+
 ## To do
 
 ### Firmware
-- WiFi run only in local network. **(it seems to be a problem with leo's board)**
-- New pin set, with PWM pin to regulate speed. Rev1: Motor speed variable added at minimun speed. 
+- Add fail after 10 iterations for wifi conection.
+- Fix analogWrite not being decleared. ==> What is analogWrite resolution?
 - Test omniwheels functions:
 
   The omniwheels where designed using the following structure: 
@@ -106,6 +110,7 @@ Por favor, cada segundo invertido en buena documentacion es un segundo ganado en
 
 **TroubleShoot**
 
-- Its preferable to flash the ESP32 board not conected to the pin, chinese version are not able to be flashed if conected. 
-
+- Its preferable to flash the ESP32 board not conected to the pin, chinese version are not able to be flashed if conected.
+- WiFi run only in local network: 
+  - Alonos Rodriguez (Friend from IOLed team): Router firewall problem. Check port forward solution, wich will allows to comunicate directly to the router, and it will send us to the ESP32 through a local IP. 
 

@@ -1,5 +1,6 @@
 #include <WiFi.h>
 #include <WebServer.h>
+#include "analogWrite.h"
 
 WebServer server(80);    // Create a webserver object that listens for HTTP request on port 80
 
@@ -63,7 +64,10 @@ void setup(void){
   for (int i =0; i < sizeof(pinMotor)-1; i++){
     pinMode(pinMotor[i],OUTPUT);
   }
-  
+  for (int i =0; i < sizeof(pinEnable)-1; i++){
+    pinMode(pinEnable[i],OUTPUT);
+    analogWriteResolution(pinEnable[i], 13);
+  }
   Serial.begin(115200);         // Start the Serial communication to send messages to the computer
   delay(10);
   Serial.println('\n');
@@ -96,6 +100,8 @@ void setup(void){
 
   server.begin();                           // Actually start the server
   Serial.println("HTTP server started");
+
+  analogWriteResolution(LED_BUILTIN, 12);
 }
 
 void loop(void){
