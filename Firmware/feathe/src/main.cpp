@@ -2,6 +2,7 @@
 #include <WebServer.h>
 #include "analogWrite.h"
 
+
 WebServer server(80);    // Create a webserver object that listens for HTTP request on port 80
 
 const int pinMotor[]= {2,0,4,16,18,19};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
@@ -99,9 +100,7 @@ void setup(void){
   server.onNotFound(handleNotFound);        // When a client requests an unknown URI (i.e. something other than "/"), call function "handleNotFound"
 
   server.begin();                           // Actually start the server
-  Serial.println("HTTP server started");
-
-  analogWriteResolution(LED_BUILTIN, 12);
+  Serial.println("HTTP server started");  
 }
 
 void loop(void){
@@ -235,7 +234,7 @@ void handleRoot() {                         // When URI / is requested, send a w
   server.send(200, "text/html", getPage());
 }
 
-void handleUP() {                          // If a POST request is made to URI /LED
+void handleUP() {                       // If a POST request is made to URI /LED
   forward();
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
@@ -259,6 +258,7 @@ void handleDOWN() {                          // If a POST request is made to URI
 
 void handleSTOP() {                          // If a POST request is made to URI /LED
   stop();
+  delay(1000);
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
