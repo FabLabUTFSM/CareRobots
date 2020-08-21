@@ -1,17 +1,11 @@
 #include <WiFi.h>
 #include <WebServer.h>
 #include "analogWrite.h"
+#include "ESPAsyncWebServer.h"
 
-WebServer server(80);    // Create a webserver object that listens for HTTP request on port 80
+AsyncWebServer server(80); 
 
-const int pinMotor[]= {2,0,4,16,18,19};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
-//const int pinMotor[]= {22,23,24,25,35,38};
-
-const int pinEnable[]={15,17,5};
-//const int pinEnable[]={21,27,34};
-
-const int motorSpeed = 10;
-
+//Wifi Config
 const char* ssid = "MIT";  // Enter SSID here
 //const char* password = " YourPassword";  //Enter Password here
 
@@ -49,25 +43,27 @@ String getPage(){
   return page;
 }
 
-void moveMotor(int motor, String direction);  /// Function that makes the motor rotate CW or CCW --> Joseto
-void handleRoot();              // function prototypes for HTTP handlers
-void handleNotFound();
-void handleUP();   ///Adding functions towards MOTORS --> JORDI
-void handleLEFT();   ///Adding functions towards MOTORS --> JORDI
-void handleRIGHT();   ///Adding functions towards MOTORS --> JORDI
-void handleDOWN();   ///Adding functions towards MOTORS --> JORDI
-void handleSTOP();   ///Adding functions towards MOTORS --> JORDI
-void handleCW(); ///Adding function rotate CW --> Joseto
-void handleCCW(); ///Adding function rotate CCW --> Joseto
+//Function declaration
+
+String handleRoot();
+String handleUp();
+String handleDown();
+String handleLeft();
+String handleRight();
+String handleCW();
+String handleCCW();
+String handleStop();
+
+//http variables
+String up="dont move";
+String down="dont move";
+String left="dont move";
+String right="dont move";
+String cw="dont move";
+String ccw="dont move";
+String stop="move";
 
 void setup(void){
-  for (int i =0; i < sizeof(pinMotor)-1; i++){
-    pinMode(pinMotor[i],OUTPUT);
-  }
-  for (int i =0; i < sizeof(pinEnable)-1; i++){
-    pinMode(pinEnable[i],OUTPUT);
-    analogWriteResolution(pinEnable[i], 13);
-  }
   Serial.begin(115200);         // Start the Serial communication to send messages to the computer
   delay(10);
   Serial.println('\n');
@@ -85,196 +81,111 @@ void setup(void){
   Serial.println("WiFi connected..!");
   Serial.print("Got IP: "); 
   Serial.println(WiFi.localIP());
+  String page = getPage();
 
-  server.on("/", HTTP_GET, handleRoot);     // Call the 'handleRoot' function when a client requests URI "/"
-  server.on("/UP", HTTP_POST, handleUP);  // Call the 'handleLED' function when a POST request is made to URI "/UP"
-  server.on("/LEFT", HTTP_POST, handleLEFT);  // Call the 'handleLED' function when a POST request is made to URI "/LEFT"
-  server.on("/RIGHT", HTTP_POST, handleRIGHT);  // Call the 'handleLED' function when a POST request is made to URI "/RIGHT"
-  server.on("/DOWN", HTTP_POST, handleDOWN);  // Call the 'handleLED' function when a POST request is made to URI "/DOWN"
-  server.on("/STOP", HTTP_POST, handleSTOP);  // Call the 'handleLED' function when a POST request is made to URI "/DOWN"
-  server.on("/CW", HTTP_POST, handleCW);  // Call the 'handleLED' function when a POST request is made to URI "/DOWN"
-  server.on("/CCW", HTTP_POST, handleCCW);  // Call the 'handleLED' function when a POST request is made to URI "/DOWN"
- 
-  
-  server.onNotFound(handleNotFound);        // When a client requests an unknown URI (i.e. something other than "/"), call function "handleNotFound"
+  server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/html", handleRoot().c_str());
+  });
+    server.on("/UP", HTTP_POST, [](AsyncWebServerRequest *request){
+    up="move";
+    request->redirect("/");
+  });
+  server.on("/UP_Client", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/html", handleUp().c_str());
+  });
+  server.on("/DOWN", HTTP_POST, [](AsyncWebServerRequest *request){
+    down="move";
+    request->redirect("/");
+  });
+    server.on("/DOWN_Client", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/html", handleDown().c_str());
+  });
+  server.on("/LEFT", HTTP_POST, [](AsyncWebServerRequest *request){
+    left="move";
+    request->redirect("/");
+  });
+  server.on("/LEFT_Client", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/html", handleLeft().c_str());
+  });
+  server.on("/RIGHT", HTTP_POST, [](AsyncWebServerRequest *request){
+    right="move";
+    request->redirect("/");
+  });
+  server.on("/RIGHT_Client", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/html", handleRight().c_str());
+  });
+  server.on("/CW", HTTP_POST, [](AsyncWebServerRequest *request){
+    cw="move";
+    request->redirect("/");
+  });
+  server.on("/CW_Client", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/html", handleCW().c_str());
+  });
+  server.on("/CCW", HTTP_POST, [](AsyncWebServerRequest *request){
+    ccw="move";
+    request->redirect("/");
+  });
+    server.on("/CCW_Client", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/html", handleCCW().c_str());
+  });
+  server.on("/STOP", HTTP_POST, [](AsyncWebServerRequest *request){
+    stop="dont move";
+    request->redirect("/");
+  });
+    server.on("/STOP_Client", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/html", handleStop().c_str());
+  });
 
   server.begin();                           // Actually start the server
   Serial.println("HTTP server started");
 
-  analogWriteResolution(LED_BUILTIN, 12);
 }
 
-void loop(void){
-  server.handleClient();                  // Listen for HTTP requests from clients
+void loop(){
+    
 }
 
-//Standar functions for bluetooth and WiFi
-void forward(){
-  moveMotor(1,"CCW");
-  moveMotor(2,"CW");
-  moveMotor(3,"Off");
+String handleRoot() {
+  return getPage();
 }
 
-void left(){
-  moveMotor(1,"CCW");
-  moveMotor(2,"CCW");
-  moveMotor(3,"CW");
+String handleUp(){
+  String input=up;
+  up= "dont move"; 
+  return input;
 }
 
-void right(){
-  moveMotor(1,"CW");
-  moveMotor(2,"CW");
-  moveMotor(3,"CCW");
+String handleDown(){
+  String input=down;
+  down= "dont move"; 
+  return input;
+}
+String handleLeft(){
+  String input=left;
+  left= "dont move"; 
+  return input;
 }
 
-void down(){
-  moveMotor(1,"CW");
-  moveMotor(2,"CCW");
-  moveMotor(3,"Off");
+String handleRight(){
+  String input=right;
+  right= "dont move"; 
+  return input;
 }
 
-void stop(){
-  moveMotor(1,"Off");
-  moveMotor(2,"Off");
-  moveMotor(3,"Off");
+String handleCW(){
+  String input=cw;
+  cw= "dont move"; 
+  return input;
 }
 
-void CW(){
-  moveMotor(1,"CW");
-  moveMotor(2,"CW");
-  moveMotor(3,"CW");
+String handleCCW(){
+  String input=ccw;
+  ccw= "dont move"; 
+  return input;
 }
 
-void CCW(){
-  moveMotor(1,"CCW");
-  moveMotor(2,"CCW");
-  moveMotor(3,"CCW");
-}
-
-void moveMotor(int motor, String direction){
-  switch (motor){
-    case 1:
-      analogWrite(pinEnable[0],motorSpeed);
-      if(direction == "CCW"){
-        digitalWrite(pinMotor[0],LOW);
-        digitalWrite(pinMotor[1],HIGH);
-        Serial.print("Motor1: ");
-        Serial.println("CCW");
-      }
-      else if (direction=="CW")
-      {
-        digitalWrite(pinMotor[0],HIGH);
-        digitalWrite(pinMotor[1],LOW);
-        Serial.print("Motor1: ");
-        Serial.println("CW");
-      }
-      else 
-      {
-        digitalWrite(pinEnable[0],LOW);
-        digitalWrite(pinMotor[0],LOW);
-        digitalWrite(pinMotor[1],LOW);
-        Serial.print("Motor1: ");
-        Serial.println("Off");
-      }
-      break;
-    case 2: 
-      analogWrite(pinEnable[1],motorSpeed);
-      if(direction == "CCW"){
-        digitalWrite(pinMotor[2],LOW);
-        digitalWrite(pinMotor[3],HIGH);
-        Serial.print("Motor2: ");
-        Serial.println("CCW");
-      }
-      else if (direction=="CW")
-      {
-        digitalWrite(pinMotor[2],HIGH);
-        digitalWrite(pinMotor[3],LOW);
-        Serial.print("Motor2: ");
-        Serial.println("CW");
-      }
-      else 
-      {   
-        digitalWrite(pinEnable[1],LOW);
-        digitalWrite(pinMotor[2],LOW);
-        digitalWrite(pinMotor[3],LOW);
-        Serial.print("Motor2: ");
-        Serial.println("Off");
-      }
-      break;
-    case 3:
-      analogWrite(pinEnable[2],motorSpeed);
-      if(direction == "CCW"){
-        digitalWrite(pinMotor[4],LOW);
-        digitalWrite(pinMotor[5],HIGH);
-        Serial.print("Motor3: ");
-        Serial.println("CCW");
-      }
-      else if (direction=="CW")
-      {
-        digitalWrite(pinMotor[4],HIGH);
-        digitalWrite(pinMotor[5],LOW);
-        Serial.print("Motor3: ");
-        Serial.println("CW");
-      }
-      else 
-      {
-        digitalWrite(pinEnable[1],LOW);
-        digitalWrite(pinMotor[4],LOW);
-        digitalWrite(pinMotor[5],LOW);
-        Serial.print("Motor3: ");
-        Serial.println("Off");
-      }
-      break;
-  }
-
-}
-
-//Functions fo HTML comunication
-
-void handleRoot() {                         // When URI / is requested, send a web page with a button to toggle the LED
-  server.send(200, "text/html", getPage());
-}
-
-void handleUP() {                          // If a POST request is made to URI /LED
-  forward();
-  server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleLEFT() {                          // If a POST request is made to URI /LED
-  left();
-  server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-void handleRIGHT() {                          // If a POST request is made to URI /LED
-  right();
-  server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-void handleDOWN() {                          // If a POST request is made to URI /LED
-  down();
-  server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleSTOP() {                          // If a POST request is made to URI /LED
-  stop();
-  server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleCW() {                          // If a POST request is made to URI /LED
-  CW();
-  server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleCCW() {                          // If a POST request is made to URI /LED
-  CCW();
-  server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
-  server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
-}
-
-void handleNotFound(){
-  server.send(404, "text/plain", "404: Not found"); // Send HTTP status 404 (Not Found) when there's no handler for the URI in the request
+String handleStop(){
+  String input=stop;
+  stop= "move"; 
+  return input;
 }
