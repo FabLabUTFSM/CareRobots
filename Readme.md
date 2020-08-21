@@ -6,7 +6,9 @@ Test press the boot button when the board is being booted.
 
 2.- Wifi Conect
 
-3.- Wifi Client - json
+3.- WifiClient Test
 
-4.- WifiClient - CareRobot
+4.- Wifi Client
+
+5.- WifiClient - CareRobot
 
