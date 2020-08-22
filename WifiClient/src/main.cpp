@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include <WiFi.h>
-#include <HTTPClient.h>
-#include "analogWrite.h"
+#include <ESP8266WiFi.h>
+#include <ESP8266HTTPClient.h>
+#include <WiFiClient.h>
 
 const char* ssid = "MIT";
 const char* password = "lololo111";
@@ -95,9 +95,10 @@ void scan(){
 
 String httpGETRequest(const char* server) {
   HTTPClient http;
+  WiFiClient client;
     
   // Your IP address with path or Domain name with URL path 
-  http.begin(server);
+  http.begin(client,server);
   
   // Send HTTP POST request
   int httpResponseCode = http.GET();
@@ -163,7 +164,7 @@ void CCW(){
 void moveMotor(int motor, String direction){
   switch (motor){
     case 1:
-      analogWrite(pinEnable[0],motorSpeed);
+      //analogWrite(pinEnable[0],motorSpeed);
       if(direction == "CCW"){
         digitalWrite(pinMotor[0],LOW);
         digitalWrite(pinMotor[1],HIGH);
@@ -187,7 +188,7 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 2: 
-      analogWrite(pinEnable[1],motorSpeed);
+      //analogWrite(pinEnable[1],motorSpeed);
       if(direction == "CCW"){
         digitalWrite(pinMotor[2],LOW);
         digitalWrite(pinMotor[3],HIGH);
@@ -211,7 +212,7 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 3:
-      analogWrite(pinEnable[2],motorSpeed);
+      //analogWrite(pinEnable[2],motorSpeed);
       if(direction == "CCW"){
         digitalWrite(pinMotor[4],LOW);
         digitalWrite(pinMotor[5],HIGH);
