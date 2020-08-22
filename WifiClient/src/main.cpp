@@ -49,14 +49,16 @@ Serial.println(WiFi.localIP());
 moveMotor(1,"Off");
 moveMotor(2,"Off");
 moveMotor(3,"Off");
-ESP.wdtDisable();
-ESP.wdtEnable(WDTO_8S);
-
+for (int i =0; i < sizeof(pinMotor)-1; i++){
+    pinMode(pinMotor[i],OUTPUT);
+}
+for (int i =0; i < sizeof(pinEnable)-1; i++){
+    pinMode(pinEnable[i],OUTPUT);
+}   
 }
 
 void loop() {
   scan();
-  ESP.wdtFeed();
 }
 
 void scan(){
