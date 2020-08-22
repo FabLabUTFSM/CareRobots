@@ -27,10 +27,10 @@ void CW();
 void scan();
 void stop();
 
-const int pinMotor[]= {2,0,4,16,18,19};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
+const int pinMotor[]= {1,0,4,3,7,8};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
 //const int pinMotor[]= {22,23,24,25,35,38};
 
-const int pinEnable[]={15,17,5};
+const int pinEnable[]={2,5,6};
 //const int pinEnable[]={21,27,34};
 
 const int motorSpeed = 10;
@@ -164,7 +164,7 @@ void CCW(){
 void moveMotor(int motor, String direction){
   switch (motor){
     case 1:
-      //analogWrite(pinEnable[0],motorSpeed);
+      analogWrite(pinEnable[0],motorSpeed);
       if(direction == "CCW"){
         digitalWrite(pinMotor[0],LOW);
         digitalWrite(pinMotor[1],HIGH);
@@ -188,7 +188,7 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 2: 
-      //analogWrite(pinEnable[1],motorSpeed);
+      analogWrite(pinEnable[1],motorSpeed);
       if(direction == "CCW"){
         digitalWrite(pinMotor[2],LOW);
         digitalWrite(pinMotor[3],HIGH);
@@ -212,7 +212,7 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 3:
-      //analogWrite(pinEnable[2],motorSpeed);
+      analogWrite(pinEnable[2],motorSpeed);
       if(direction == "CCW"){
         digitalWrite(pinMotor[4],LOW);
         digitalWrite(pinMotor[5],HIGH);
