@@ -46,6 +46,9 @@ while(WiFi.status() != WL_CONNECTED) {
 Serial.println("");
 Serial.print("Connected to WiFi network with IP Address: ");
 Serial.println(WiFi.localIP());
+moveMotor(1,"Off");
+moveMotor(2,"Off");
+moveMotor(3,"Off");
 }
 
 void loop() {
