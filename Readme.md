@@ -10,5 +10,5 @@ Test press the boot button when the board is being booted.
 
 4.- Wifi Client
 
-5.- WifiClient - CareRobot
+5.- WifiServer - CareRobot
 
