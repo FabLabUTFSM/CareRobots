@@ -126,6 +126,7 @@ void forward(){
   moveMotor(1,"CCW");
   moveMotor(2,"CW");
   moveMotor(3,"Off");
+  delay(1000);
 }
 
 void left(){
