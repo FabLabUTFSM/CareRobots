@@ -1,10 +1,9 @@
-#include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include <WiFiClient.h>
 
-const char* ssid = "MIT";
-const char* password = "lololo111";
+const char* ssid = "CLARO_74f4";
+const char* password = "205104892";
 
 const char* serverNameUp = "http://18.21.85.70/UP_Client";
 const char* serverNameDown = "http://18.21.85.70/DOWN_Client";
@@ -27,11 +26,10 @@ void CW();
 void scan();
 void stop();
 
-const int pinMotor[]= {1,0,4,3,7,8};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
-//const int pinMotor[]= {22,23,24,25,35,38};
+const int pinMotor[]= {5,16,2,0,13,15};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
 
-const int pinEnable[]={2,5,6};
-//const int pinEnable[]={21,27,34};
+const int pinEnable[]={4,14,12};
+
 
 const int motorSpeed = 10;
 
