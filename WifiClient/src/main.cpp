@@ -26,10 +26,9 @@ void CW();
 void scan();
 void stop();
 
-const int pinMotor[]= {1,0,4,3,7,8};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
-//const int pinMotor[]= {22,23,24,25,35,38};
+const int pinMotor[]= {5,16,2,0,13,15};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
 
-const int pinEnable[]={2,5,6};
+const int pinEnable[]={4,14,12};
 
 const int motorSpeed = 10;
 
