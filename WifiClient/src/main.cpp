@@ -29,9 +29,12 @@ void stop();
 const int pinMotor[]= {1,0,4,3,7,8};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
 //const int pinMotor[]= {22,23,24,25,35,38};
 
+<<<<<<< HEAD
+=======
 const int pinEnable[]={2,5,6};
 //const int pinEnable[]={21,27,34};
 
+>>>>>>> 0ee09eeda24d870bdfaa95e273ad9202d4ad7792
 const int motorSpeed = 10;
 
 void setup() {
@@ -129,8 +132,13 @@ void forward(){
 
 void left(){
   moveMotor(1,"Off");
+<<<<<<< HEAD
+  moveMotor(2,"CCW");
+  moveMotor(3,"CW");
+=======
   moveMotor(2,"CW");
   moveMotor(3,"Off");
+>>>>>>> 0ee09eeda24d870bdfaa95e273ad9202d4ad7792
 }
 
 void right(){
