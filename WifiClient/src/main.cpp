@@ -128,13 +128,9 @@ void forward(){
 
 void left(){
   moveMotor(1,"Off");
-<<<<<<< HEAD
-  moveMotor(2,"CCW");
-  moveMotor(3,"CW");
-=======
   moveMotor(2,"CW");
   moveMotor(3,"Off");
->>>>>>> 0ee09eeda24d870bdfaa95e273ad9202d4ad7792
+
 }
 
 void right(){
