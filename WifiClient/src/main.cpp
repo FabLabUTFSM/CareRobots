@@ -129,8 +129,8 @@ void forward(){
 
 void left(){
   moveMotor(1,"Off");
-  moveMotor(2,"CCW");
-  moveMotor(3,"CW");
+  moveMotor(2,"CW");
+  moveMotor(3,"Off");
 }
 
 void right(){
