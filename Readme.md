@@ -10,15 +10,20 @@ We aim to build low cost telepresence robots, that can be build in any Fab Lab/M
 
 ## Firmware
 
-Currently there are 3 firmware options, wich diferenciate the board or the comunication method. All of this codes can be downloaded from its specific branch, or in the following links: 
+1.0: This firmware is built for an [Adafruit Huzzah feather ESP32](https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/overview), currently other boards aren't working with such reliability.
 
-### ESP32
-- [Bluetooth](https://github.com/FabLabUTFSM/CareRobots/blob/bluetooth-ESP32/Firmware/feathe/src/main.cpp)
-- [WiFi](https://github.com/FabLabUTFSM/CareRobots/blob/wifi-ESP32/Firmware/feathe/src/main.cpp)
+In Chile the router don't allow to acces them remotely, currently there are 2 firmware: 
 
-Fab Lab UTFSM is currently first prototype was built using the ESP32 30 pin board [DOIT WROOM ESP32](https://afel.cl/producto/placa-desarrollo-doit-wroom-32-bluetooth-wifi/). 
+- WiFiClient, the firmware that operates directly to the robot. 
+- WiFiServer, a WebServer for http comunication, currently hosted in Boston in a ESP32, this defenitly has to change to gain more speed in the comunication. 
 
-The following image shows the conections we have made: 
+For configuration the code has a configuration section, the user has to define: 
+
+- WiFi ssid and password
+- Pins conected to the dc motor driver
+- Motor speed
+
+### Conections
 
 <p align="center">
   <img width="400"  src="Images/Fritizing.png">
@@ -26,22 +31,19 @@ The following image shows the conections we have made:
 
 
 
-### ESP8266
-- [WiFi](https://github.com/FabLabUTFSM/CareRobots/blob/wifi-ESP8266/Firmware/feathe/src/main.cpp)
-
 ### Libraries
 
-If you are downloading the softwares directlly you hace to coinsider that they are coded using [Platformio](https://platformio.org/), if you are using the Arduino IDE, you will only need the .cpp file (if you fill is more comftable, you can change the extension to .ino), and download the following libraries: 
+If you are downloading the softwares directlly you hace to coinsider that they are coded using [Platformio](https://platformio.org/), if you are using the Arduino IDE, you will find the codes in the src folder, they will titled as main.cpp (if you fill is more comftable, you can change the extension to .ino), and download the following libraries: 
 
 #### ESP32 - Bluetooth
 - [BluetoothSerial](https://github.com/espressif/arduino-esp32/tree/master/libraries/BluetoothSerial)
 
 #### ESP32 - WiFi
 - [WebServer](https://github.com/espressif/arduino-esp32/tree/master/libraries/WebServer)
+- [analogWrite](https://github.com/ERROPiX/ESP32_AnalogWrite)
 
 #### ESP8266 - WiFi
 - [ESP8266WiFi](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi)
-- [ESP8266mDNS](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266mDNS)
 - [ESP8266WebServer](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WebServer)
 
 ### Install NodeMCU in Arduino IDE
