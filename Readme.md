@@ -138,3 +138,10 @@ __Do not build right away, the structure is being tested in Fab Lab UTFSM, uptda
 ## Assembly
 
 Pictures of the assembly process. 
+
+## To do
+
+- Add external antenna [link](https://randomnerdtutorials.com/esp32-cam-connect-external-antenna/)
+- Add charge battery [link](https://www.amazon.com/Charging-Control-Module-Controller-Lithium-ion/dp/B07P83BPTR/ref=sr_1_10?dchild=1&keywords=battery+charger+board+12v&qid=1598886718&sr=8-10)
+- Unify code for ESP8266 and ESP32 
+- Identify why non Adafruit boards doesn't work. 
