@@ -1,3 +1,8 @@
+#include <Arduino.h>
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include "analogWrite.h"
+
 /***********CONFIGURATION************
  * This section will define all the variables the user is spected to
  * configurate, please don't modify the other sections*/
@@ -18,10 +23,6 @@ const int motorSpeed = 255; //Motor speed, this variable will define the motor s
 
 /******DON NOT MODIFY PASS HERE*********/
 
-#include <Arduino.h>
-#include <WiFi.h>
-#include <HTTPClient.h>
-#include "analogWrite.h"
 
 const char* serverNameUp = "http://10.31.209.244/UP_Client";
 const char* serverNameDown = "http://10.31.209.244/DOWN_Client";
@@ -60,6 +61,7 @@ else
 {
 WiFi.begin(ssid);
 }
+
 while(WiFi.status() != WL_CONNECTED) { 
     delay(500);
     Serial.print(".");
