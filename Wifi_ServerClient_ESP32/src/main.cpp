@@ -15,6 +15,10 @@ const int pinEnable[]={13,32,14};
 
 const int motorSpeed = 255; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
 
+/*****************MOTOR DIRECTION**********/
+bool motor1 = false;
+bool motor2 = true;
+bool motor3 = true;
 
 /******DON NOT MODIFY PASS HERE*********/
 
@@ -285,15 +289,30 @@ void moveMotor(int motor, String direction){
     case 1:
      digitalWrite(pinEnable[0],HIGH);
       if(direction == "CCW"){
-        digitalWrite(pinMotor[0],LOW);
-        digitalWrite(pinMotor[1],HIGH);
+        if (motor1){
+          digitalWrite(pinMotor[0],LOW);
+          digitalWrite(pinMotor[1],HIGH);
+        }
+        else
+        {
+          digitalWrite(pinMotor[0],HIGH);
+          digitalWrite(pinMotor[1],LOW);
+        }
+        
         Serial.print("Motor1: ");
         Serial.println("CCW");
       }
       else if (direction=="CW")
       {
-        digitalWrite(pinMotor[0],HIGH);
-        digitalWrite(pinMotor[1],LOW);
+        if (motor1){
+          digitalWrite(pinMotor[0],HIGH);
+          digitalWrite(pinMotor[1],LOW);
+        }
+        else
+        {
+          digitalWrite(pinMotor[0],LOW);
+          digitalWrite(pinMotor[1],HIGH);
+        }
         Serial.print("Motor1: ");
         Serial.println("CW");
       }
@@ -309,15 +328,31 @@ void moveMotor(int motor, String direction){
     case 2: 
       digitalWrite(pinEnable[1],HIGH);
       if(direction == "CCW"){
-        digitalWrite(pinMotor[2],LOW);
-        digitalWrite(pinMotor[3],HIGH);
+        if (motor2){
+          digitalWrite(pinMotor[2],LOW);
+          digitalWrite(pinMotor[3],HIGH);
+        }
+        else
+        {
+          digitalWrite(pinMotor[2],HIGH);
+          digitalWrite(pinMotor[3],LOW);
+        }
         Serial.print("Motor2: ");
         Serial.println("CCW");
       }
       else if (direction=="CW")
       {
-        digitalWrite(pinMotor[2],HIGH);
-        digitalWrite(pinMotor[3],LOW);
+        if (motor2)
+        {
+          digitalWrite(pinMotor[2],HIGH);
+          digitalWrite(pinMotor[3],LOW);
+        }
+        else
+        {
+          digitalWrite(pinMotor[2],LOW);
+          digitalWrite(pinMotor[3],HIGH);
+        }
+        
         Serial.print("Motor2: ");
         Serial.println("CW");
       }
@@ -333,15 +368,30 @@ void moveMotor(int motor, String direction){
     case 3:
       analogWrite(pinEnable[2],motorSpeed);
       if(direction == "CCW"){
-        digitalWrite(pinMotor[4],LOW);
-        digitalWrite(pinMotor[5],HIGH);
+        if (motor3){
+          digitalWrite(pinMotor[4],LOW);
+          digitalWrite(pinMotor[5],HIGH);
+        }
+        else
+        {
+          digitalWrite(pinMotor[4],HIGH);
+          digitalWrite(pinMotor[5],LOW);
+        }
         Serial.print("Motor3: ");
         Serial.println("CCW");
       }
       else if (direction=="CW")
       {
-        digitalWrite(pinMotor[4],HIGH);
-        digitalWrite(pinMotor[5],LOW);
+        if (motor3)
+        {
+          digitalWrite(pinMotor[4],HIGH);
+          digitalWrite(pinMotor[5],LOW);
+        }
+        else
+        {
+          digitalWrite(pinMotor[4],LOW);
+          digitalWrite(pinMotor[5],HIGH);
+        }
         Serial.print("Motor3: ");
         Serial.println("CW");
       }
