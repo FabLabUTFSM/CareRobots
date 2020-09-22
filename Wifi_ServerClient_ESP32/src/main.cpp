@@ -13,7 +13,7 @@ const char* password = ""; //WiFi password
 const int pinMotor[]= {12,27,15,33,22,23};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
 const int pinEnable[]={13,32,14};
 
-const int motorSpeed = 255; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
+const int motorSpeed = 220; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
 
 /*****************MOTOR DIRECTION**********/
 bool motor1 = false;
@@ -287,7 +287,7 @@ void CCW(){
 void moveMotor(int motor, String direction){
   switch (motor){
     case 1:
-     digitalWrite(pinEnable[0],HIGH);
+     analogWrite(pinEnable[0],motorSpeed);
       if(direction == "CCW"){
         if (motor1){
           digitalWrite(pinMotor[0],LOW);
@@ -326,7 +326,7 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 2: 
-      digitalWrite(pinEnable[1],HIGH);
+      analogWrite(pinEnable[1],motorSpeed);
       if(direction == "CCW"){
         if (motor2){
           digitalWrite(pinMotor[2],LOW);
