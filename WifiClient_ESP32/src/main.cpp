@@ -15,6 +15,22 @@ const int pinEnable[]={13,32,14};
 
 const int motorSpeed = 255; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
 
+/*******************TORQUE RAMP CONFIGURATIO*********/
+/**Key:
+ * maxPayload: PWM payload in wich the robot breaks the inertia. 
+ * minPayload: PWM payload for the normal speed we want to aim for our robot. 
+ * torqueRampSmoother: Will set te amount of cycles in wich the robot will reach the desired speed. A big number will take more time to reach the speed, but in a smoother way. 
+*************************************************************************************************/
+
+bool inMove = false;
+const int maxPayload = 255;
+const int minPayload = 120;
+const int torqueRampSmoother =10; //The smaller this number is, the slower the acceleration will be. 
+
+/*****************MOTOR DIRECTION**********/
+bool motor1 = false;
+bool motor2 = true;
+bool motor3 = true;
 
 /******DON NOT MODIFY PASS HERE*********/
 
@@ -31,7 +47,6 @@ const char* serverNameCW = "http://10.31.234.247/CW_Client";
 const char* serverNameCCW = "http://10.31.234.247/CCW_Client";
 const char* serverNameStop = "http://10.31.234.247/STOP_Client";
 
-
 String httpGETRequest(const char* server);
 void moveMotor(int motor, String direction); 
 void forward();
@@ -43,6 +58,7 @@ void CCW();
 void CW();
 void scan();
 void stop();
+void torqueRamp();
 
 
 void setup() {
@@ -128,48 +144,55 @@ String httpGETRequest(const char* server) {
 
   return payload;
 }
+
 //Standar functions for bluetooth and WiFi
 void forward(){
   moveMotor(1,"CCW");
   moveMotor(2,"CW");
   moveMotor(3,"Off");
-  delay(100);
+  torqueRamp("CCW","CW","Off");
 }
 
 void left(){
   moveMotor(1,"CCW");
   moveMotor(2,"CCW");
   moveMotor(3,"CW");
+  torqueRamp("CCW","CCW","CW");
 }
 
 void right(){
   moveMotor(1,"CW");
   moveMotor(2,"CW");
   moveMotor(3,"CCW");
+  torqueRamp("CW","CW","CCW");
 }
 
 void down(){
   moveMotor(1,"CW");
   moveMotor(2,"CCW");
   moveMotor(3,"Off");
+  torqueRamp("CW","CCW","Off");
 }
 
 void stop(){
   moveMotor(1,"Off");
   moveMotor(2,"Off");
   moveMotor(3,"Off");
+  inMove=false;
 }
 
 void CW(){
   moveMotor(1,"CW");
   moveMotor(2,"CW");
   moveMotor(3,"CW");
+  torqueRamp("CW","CW","CW");
 }
 
 void CCW(){
   moveMotor(1,"CCW");
   moveMotor(2,"CCW");
   moveMotor(3,"CCW");
+  torqueRamp("CCW","CCW","CCW");
 }
 
 
@@ -178,15 +201,30 @@ void moveMotor(int motor, String direction){
     case 1:
      analogWrite(pinEnable[0],motorSpeed);
       if(direction == "CCW"){
-        digitalWrite(pinMotor[0],LOW);
-        digitalWrite(pinMotor[1],HIGH);
+        if (motor1){
+          digitalWrite(pinMotor[0],LOW);
+          digitalWrite(pinMotor[1],HIGH);
+        }
+        else
+        {
+          digitalWrite(pinMotor[0],HIGH);
+          digitalWrite(pinMotor[1],LOW);
+        }
+        
         Serial.print("Motor1: ");
         Serial.println("CCW");
       }
       else if (direction=="CW")
       {
-        digitalWrite(pinMotor[0],HIGH);
-        digitalWrite(pinMotor[1],LOW);
+        if (motor1){
+          digitalWrite(pinMotor[0],HIGH);
+          digitalWrite(pinMotor[1],LOW);
+        }
+        else
+        {
+          digitalWrite(pinMotor[0],LOW);
+          digitalWrite(pinMotor[1],HIGH);
+        }
         Serial.print("Motor1: ");
         Serial.println("CW");
       }
@@ -202,15 +240,31 @@ void moveMotor(int motor, String direction){
     case 2: 
       analogWrite(pinEnable[1],motorSpeed);
       if(direction == "CCW"){
-        digitalWrite(pinMotor[2],LOW);
-        digitalWrite(pinMotor[3],HIGH);
+        if (motor2){
+          digitalWrite(pinMotor[2],LOW);
+          digitalWrite(pinMotor[3],HIGH);
+        }
+        else
+        {
+          digitalWrite(pinMotor[2],HIGH);
+          digitalWrite(pinMotor[3],LOW);
+        }
         Serial.print("Motor2: ");
         Serial.println("CCW");
       }
       else if (direction=="CW")
       {
-        digitalWrite(pinMotor[2],HIGH);
-        digitalWrite(pinMotor[3],LOW);
+        if (motor2)
+        {
+          digitalWrite(pinMotor[2],HIGH);
+          digitalWrite(pinMotor[3],LOW);
+        }
+        else
+        {
+          digitalWrite(pinMotor[2],LOW);
+          digitalWrite(pinMotor[3],HIGH);
+        }
+        
         Serial.print("Motor2: ");
         Serial.println("CW");
       }
@@ -226,15 +280,30 @@ void moveMotor(int motor, String direction){
     case 3:
       analogWrite(pinEnable[2],motorSpeed);
       if(direction == "CCW"){
-        digitalWrite(pinMotor[4],LOW);
-        digitalWrite(pinMotor[5],HIGH);
+        if (motor3){
+          digitalWrite(pinMotor[4],LOW);
+          digitalWrite(pinMotor[5],HIGH);
+        }
+        else
+        {
+          digitalWrite(pinMotor[4],HIGH);
+          digitalWrite(pinMotor[5],LOW);
+        }
         Serial.print("Motor3: ");
         Serial.println("CCW");
       }
       else if (direction=="CW")
       {
-        digitalWrite(pinMotor[4],HIGH);
-        digitalWrite(pinMotor[5],LOW);
+        if (motor3)
+        {
+          digitalWrite(pinMotor[4],HIGH);
+          digitalWrite(pinMotor[5],LOW);
+        }
+        else
+        {
+          digitalWrite(pinMotor[4],LOW);
+          digitalWrite(pinMotor[5],HIGH);
+        }
         Serial.print("Motor3: ");
         Serial.println("CW");
       }
@@ -247,5 +316,31 @@ void moveMotor(int motor, String direction){
         Serial.println("Off");
       }
       break;
+  }
+}
+
+void torqueRamp(String motor1Status, String motor2Status, String motor3Status){
+  int payload = maxPayload;
+  int delta = (maxPayload-minPayload)/torqueRampSmoother;
+  if(!inMove){
+    Serial.println("Torque Ramp");
+    while (payload > minPayload)
+    {
+      if (motor1Status != "Off")
+      {
+        analogWrite(pinEnable[0],payload);
+      }
+      if (motor2Status != "Off")
+      {
+        analogWrite(pinEnable[1],payload);
+      }
+      if (motor3Status != "Off")
+      {
+        analogWrite(pinEnable[3],payload);
+      }
+      payload=payload-delta;
+      delay(500);
+    }
+    inMove= true;
   }
 }
