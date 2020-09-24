@@ -20,12 +20,15 @@ const int motorSpeed = 255; //Motor speed, this variable will define the motor s
  * maxPayload: PWM payload in wich the robot breaks the inertia. 
  * minPayload: PWM payload for the normal speed we want to aim for our robot. 
  * torqueRampSmoother: Will set te amount of cycles in wich the robot will reach the desired speed. A big number will take more time to reach the speed, but in a smoother way. 
+ * delay: Time wich a PWM torque stays working. 
+ The ramp time will be defines by the following equation: (maxPayload-minPayload)*delay/toqueRampSmoother. 
 *************************************************************************************************/
 
 bool inMove = false;
 const int maxPayload = 255;
 const int minPayload = 120;
 const int torqueRampSmoother =10; //The smaller this number is, the slower the acceleration will be. 
+const int torqueRampDelay= 10; 
 
 /*****************MOTOR DIRECTION**********/
 bool motor1 = false;
@@ -339,7 +342,7 @@ void torqueRamp(String motor1Status, String motor2Status, String motor3Status){
         analogWrite(pinEnable[3],payload);
       }
       payload=payload-delta;
-      delay(500);
+      delay(torqueRampDelay);
     }
     inMove= true;
   }
