@@ -14,6 +14,21 @@ bool motor1 = false;
 bool motor2 = true;
 bool motor3 = true;
 
+/*******************TORQUE RAMP CONFIGURATION*********/
+/**Key:
+ * maxPayload: PWM payload in wich the robot breaks the inertia. 
+ * minPayload: PWM payload for the normal speed we want to aim for our robot. 
+ * torqueRampSmoother: Will set te amount of cycles in wich the robot will reach the desired speed. A big number will take more time to reach the speed, but in a smoother way. 
+ * delay: Time wich a PWM torque stays working. 
+ The ramp time will be defines by the following equation: (maxPayload-minPayload)*delay/toqueRampSmoother. 
+*************************************************************************************************/
+
+bool inMove = false;
+const int maxPayload = 255;
+const int minPayload = 120;
+const int torqueRampSmoother =10; //The smaller this number is, the slower the acceleration will be. 
+const int torqueRampDelay= 10;  
+
 /****************** libraries*************/
 #include "analogWrite.h"
 #include <Arduino.h>
@@ -27,6 +42,7 @@ void down();
 void CCW();
 void CW();
 void stop();
+void torqueRamp(String motor1Status, String motor2Status, String motor3Status);
 
 void setup() {
   for (byte i=0; i< sizeof(pinMotor); i++ ){
@@ -50,50 +66,56 @@ void forward(){
   moveMotor(1,"CCW");
   moveMotor(2,"CW");
   moveMotor(3,"Off");
-  delay(100);
+  torqueRamp("CCW","CW","Off");
 }
 
 void left(){
   moveMotor(1,"CCW");
   moveMotor(2,"CCW");
   moveMotor(3,"CW");
+  torqueRamp("CCW","CCW","CW");
 }
 
 void right(){
   moveMotor(1,"CW");
   moveMotor(2,"CW");
   moveMotor(3,"CCW");
+  torqueRamp("CW","CW","CCW");
 }
 
 void down(){
   moveMotor(1,"CW");
   moveMotor(2,"CCW");
   moveMotor(3,"Off");
+  torqueRamp("CW","CCW","Off");
 }
 
 void stop(){
   moveMotor(1,"Off");
   moveMotor(2,"Off");
   moveMotor(3,"Off");
+  inMove=false;
 }
 
 void CW(){
   moveMotor(1,"CW");
   moveMotor(2,"CW");
   moveMotor(3,"CW");
+  torqueRamp("CW","CW","CW");
 }
 
 void CCW(){
   moveMotor(1,"CCW");
   moveMotor(2,"CCW");
   moveMotor(3,"CCW");
+  torqueRamp("CCW","CCW","CCW");
 }
 
 
 void moveMotor(int motor, String direction){
   switch (motor){
     case 1:
-     digitalWrite(pinEnable[0],HIGH);
+     analogWrite(pinEnable[0],motorSpeed);
       if(direction == "CCW"){
         if (motor1){
           digitalWrite(pinMotor[0],LOW);
@@ -132,7 +154,7 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 2: 
-      digitalWrite(pinEnable[1],HIGH);
+      analogWrite(pinEnable[1],motorSpeed);
       if(direction == "CCW"){
         if (motor2){
           digitalWrite(pinMotor[2],LOW);
@@ -210,5 +232,31 @@ void moveMotor(int motor, String direction){
         Serial.println("Off");
       }
       break;
+  }
+}
+
+void torqueRamp(String motor1Status, String motor2Status, String motor3Status){
+  int payload = maxPayload;
+  int delta = (maxPayload-minPayload)/torqueRampSmoother;
+  if(!inMove){
+    Serial.println("Torque Ramp");
+    while (payload > minPayload)
+    {
+      if (motor1Status != "Off")
+      {
+        analogWrite(pinEnable[0],payload);
+      }
+      if (motor2Status != "Off")
+      {
+        analogWrite(pinEnable[1],payload);
+      }
+      if (motor3Status != "Off")
+      {
+        analogWrite(pinEnable[3],payload);
+      }
+      payload=payload-delta;
+      delay(500);
+    }
+    inMove= true;
   }
 }

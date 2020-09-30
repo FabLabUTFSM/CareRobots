@@ -15,12 +15,20 @@ const int pinEnable[]={13,32,14};
 
 const int motorSpeed = 220; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
 
-//Torque ramp variables
+/*******************TORQUE RAMP CONFIGURATION*********/
+/**Key:
+ * maxPayload: PWM payload in wich the robot breaks the inertia. 
+ * minPayload: PWM payload for the normal speed we want to aim for our robot. 
+ * torqueRampSmoother: Will set te amount of cycles in wich the robot will reach the desired speed. A big number will take more time to reach the speed, but in a smoother way. 
+ * delay: Time wich a PWM torque stays working. 
+ The ramp time will be defines by the following equation: (maxPayload-minPayload)*delay/toqueRampSmoother. 
+*************************************************************************************************/
 
 bool inMove = false;
 const int maxPayload = 255;
 const int minPayload = 120;
 const int torqueRampSmoother =10; //The smaller this number is, the slower the acceleration will be. 
+const int torqueRampDelay= 10; 
 
 /*****************MOTOR DIRECTION**********/
 bool motor1 = false;
