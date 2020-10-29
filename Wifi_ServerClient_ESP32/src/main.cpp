@@ -11,7 +11,7 @@ const char* password = ""; //WiFi password
  * image. */
 
 const int pinMotor[]= {12,27,15,33,22,23};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
-const int pinEnable[]={13,32,14};
+const int pinEnable[]={21,32,14};
 
 const int motorSpeed = 220; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
 
@@ -41,6 +41,8 @@ bool motor3 = true;
 #include <WebServer.h>
 #include "analogWrite.h"
 #include "ESPAsyncWebServer.h"
+
+const int led = 13;
 
 AsyncWebServer server(80); 
 
@@ -110,11 +112,15 @@ String ccw_send="dont move";
 String stop_send="move";
 
 void setup(void){
+  pinMode(led,OUTPUT);
+  digitalWrite(led,LOW);
   for (byte i=0; i< sizeof(pinMotor); i++ ){
     pinMode(pinMotor[i],OUTPUT);
+    digitalWrite(pinMotor[i],LOW);
   }
   for (byte i=0; i< sizeof(pinEnable); i++ ){
     pinMode(pinEnable[i],OUTPUT);
+    digitalWrite(pinMotor[i],LOW);
   }
   Serial.begin(115200);         // Start the Serial communication to send messages to the computer
   delay(10);
@@ -134,6 +140,7 @@ void setup(void){
     delay(1000);
     Serial.print(".");
   }
+  digitalWrite(led,HIGH);
   Serial.println("");
   Serial.println("WiFi connected..!");
   Serial.print("Got IP: "); 
