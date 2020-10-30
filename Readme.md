@@ -12,24 +12,11 @@ We aim to build low cost telepresence robots, that can be build in any Fab Lab/M
 
 1.0: This firmware is built for an [Adafruit Huzzah feather ESP32](https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/overview), currently other boards aren't working with such reliability.
 
-In Chile the router don't allow to acces them remotely, currently there are 2 firmware: 
-
-- WiFiClient, the firmware that operates directly to the robot. 
-- WiFiServer, a WebServer for http comunication, currently hosted in Boston in a ESP32, this defenitly has to change to gain more speed in the comunication. 
-
-For configuration the code has a configuration section, the user has to define: 
-
-- WiFi ssid and password
-- Pins conected to the dc motor driver
-- Motor speed
-
-### Conections
+### Schematic
 
 <p align="center">
-  <img width="400"  src="Images/Fritizing.png">
+  <img width="800"  src="Images/Fritizing.png">
 </p>
-
-
 
 ### Libraries
 
@@ -45,6 +32,60 @@ If you are downloading the softwares directlly you hace to coinsider that they a
 #### ESP8266 - WiFi
 - [ESP8266WiFi](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi)
 - [ESP8266WebServer](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WebServer)
+
+### Configuration
+
+The current code we have been using is Wifi_ServerClient_ESP32. Key configurations: 
+
+#### WiFi
+
+Set your WiFi passports, to connect the board to your home network.  
+```
+bool wifiPass = false ; //True if the WiFi network has password; False if not. 
+const char* ssid = ""; //WiFi ssid
+const char* password = ""; //WiFi password
+```
+
+#### Motor Settings
+
+##### Conections
+
+This variables configure the motors pins. In this case, the conection are configured for the conections showed in [Schematic](#Schematic) section. 
+
+
+
+```
+//Section 1
+const int pinMotor[]= {12,27,15,33,22,23};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
+const int pinEnable[]={21,32,14};
+ ```
+##### Torque Ramp Setting
+
+This section works specifically for the torque ramp variables. The torque ramp is used as a patch meanwhile an speed control PID is implemented. 
+
+Key:
+ * maxPayload: PWM payload in wich the robot breaks the inertia. 
+ * minPayload: PWM payload for the normal speed we want to aim for our robot. 
+ * torqueRampSmoother: Will set te amount of cycles in wich the robot will reach the desired speed. A big number will take more time to reach the speed, but in a smoother way. 
+ * delay: Time wich a PWM torque stays working. 
+ The ramp time will be defines by the following equation: (maxPayload-minPayload)*delay/toqueRampSmoother. 
+
+```
+const int maxPayload = 255;
+const int minPayload = 240;
+const int torqueRampSmoother =10; 
+const int torqueRampDelay= 100; 
+```
+##### Motor direction
+
+This variables are designed to control the motor direction from the code and not from the conections. In case a motor is conected in an oposite direction to the shown in the schematics. The user just have to change the variable value for that motor, and it wheel automatically change direction. 
+
+
+```
+bool motor1 = false;
+bool motor2 = true;
+bool motor3 = false;
+```
 
 ### Install NodeMCU in Arduino IDE
 

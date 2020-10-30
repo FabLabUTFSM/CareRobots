@@ -11,7 +11,7 @@ const char* password = ""; //WiFi password
  * image. */
 
 const int pinMotor[]= {12,27,15,33,22,23};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
-const int pinEnable[]={21,32,14};
+const int pinEnable[]={13,32,14};
 
 const int motorSpeed = 140; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
 bool motorTimeControl = true; //True if the users wants to control the time the robot is activated, false if not. 
@@ -28,10 +28,10 @@ const int motorDelay = 100; //Defines the amount of time the robot will move
 *************************************************************************************************/
 
 bool inMove = false;
-const int maxPayload = 215;
-const int minPayload = 120;
+const int maxPayload = 255;
+const int minPayload = 240;
 const int torqueRampSmoother =10; //The smaller this number is, the slower the acceleration will be. 
-const int torqueRampDelay= 10; 
+const int torqueRampDelay= 100; 
 
 /*****************MOTOR DIRECTION**********/
 bool motor1 = false;
@@ -47,7 +47,7 @@ bool motor3 = false;
 
 AsyncWebServer server(80); 
 
-const int led = 13;
+const int led = 21;
 
 /// Create the website
 String getPage(){
@@ -333,7 +333,7 @@ void CCW(){
 void moveMotor(int motor, String direction){
   switch (motor){
     case 1:
-     analogWrite(pinEnable[0],motorSpeed);
+     //analogWrite(pinEnable[0],motorSpeed);
       if(direction == "CCW"){
         if (motor1){
           digitalWrite(pinMotor[0],LOW);
@@ -372,7 +372,7 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 2: 
-      analogWrite(pinEnable[1],motorSpeed);
+      //analogWrite(pinEnable[1],motorSpeed);
       if(direction == "CCW"){
         if (motor2){
           digitalWrite(pinMotor[2],LOW);
@@ -412,7 +412,7 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 3:
-      analogWrite(pinEnable[2],motorSpeed);
+      //analogWrite(pinEnable[2],motorSpeed);
       if(direction == "CCW"){
         if (motor3){
           digitalWrite(pinMotor[4],LOW);
@@ -470,7 +470,7 @@ void torqueRamp(String motor1Status, String motor2Status, String motor3Status){
       }
       if (motor3Status != "Off")
       {
-        analogWrite(pinEnable[3],payload);
+        analogWrite(pinEnable[2],payload);
       }
       payload=payload-delta;
       delay(torqueRampDelay);
