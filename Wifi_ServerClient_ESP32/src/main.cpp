@@ -2,7 +2,7 @@
  * This section will define all the variables the user is spected to
  * configurate, please don't modify the other sections*/
 
-bool wifiPass = false; //True if the WiFi network has password; False if not. 
+bool wifiPass = false ; //True if the WiFi network has password; False if not. 
 const char* ssid = "MIT"; //WiFi ssid
 const char* password = ""; //WiFi password
 
@@ -13,7 +13,10 @@ const char* password = ""; //WiFi password
 const int pinMotor[]= {12,27,15,33,22,23};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
 const int pinEnable[]={21,32,14};
 
-const int motorSpeed = 220; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
+const int motorSpeed = 140; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
+bool motorTimeControl = true; //True if the users wants to control the time the robot is activated, false if not. 
+const int motorDelay = 100; //Defines the amount of time the robot will move 
+ 
 
 /*******************TORQUE RAMP CONFIGURATION*********/
 /**Key:
@@ -25,7 +28,7 @@ const int motorSpeed = 220; //Motor speed, this variable will define the motor s
 *************************************************************************************************/
 
 bool inMove = false;
-const int maxPayload = 255;
+const int maxPayload = 215;
 const int minPayload = 120;
 const int torqueRampSmoother =10; //The smaller this number is, the slower the acceleration will be. 
 const int torqueRampDelay= 10; 
@@ -33,7 +36,7 @@ const int torqueRampDelay= 10;
 /*****************MOTOR DIRECTION**********/
 bool motor1 = false;
 bool motor2 = true;
-bool motor3 = true;
+bool motor3 = false;
 
 /******DON NOT MODIFY PASS HERE*********/
 
@@ -42,9 +45,9 @@ bool motor3 = true;
 #include "analogWrite.h"
 #include "ESPAsyncWebServer.h"
 
-const int led = 13;
-
 AsyncWebServer server(80); 
+
+const int led = 13;
 
 /// Create the website
 String getPage(){
@@ -220,6 +223,14 @@ void setup(void){
 }
 
 void loop(){
+   if (WiFi.status() == WL_CONNECTED){
+     digitalWrite(led,HIGH);
+   }
+   else
+   {
+     digitalWrite(led,LOW);
+   }
+      
     
 }
 
@@ -462,7 +473,7 @@ void torqueRamp(String motor1Status, String motor2Status, String motor3Status){
         analogWrite(pinEnable[3],payload);
       }
       payload=payload-delta;
-      delay(500);
+      delay(torqueRampDelay);
     }
     inMove= true;
   }
