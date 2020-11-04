@@ -12,26 +12,23 @@ const char* password = ""; //WiFi password
 
 const int pinMotor[]= {12,27,15,33,22,23};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
 const int pinEnable[]={13,32,14};
+const int led = 21;
 
-const int motorSpeed = 140; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
-bool motorTimeControl = true; //True if the users wants to control the time the robot is activated, false if not. 
-const int motorDelay = 100; //Defines the amount of time the robot will move 
  
-
 /*******************TORQUE RAMP CONFIGURATION*********/
 /**Key:
- * maxPayload: PWM payload in wich the robot breaks the inertia. 
+ * maxPayload: PWM payload in wich the robot breaks the inertia. The maximum value it can take is 255.  
  * minPayload: PWM payload for the normal speed we want to aim for our robot. 
  * torqueRampSmoother: Will set te amount of cycles in wich the robot will reach the desired speed. A big number will take more time to reach the speed, but in a smoother way. 
  * delay: Time wich a PWM torque stays working. 
  The ramp time will be defines by the following equation: (maxPayload-minPayload)*delay/toqueRampSmoother. 
 *************************************************************************************************/
-
-bool inMove = false;
+bool enableTorqueRamp = false; // True uses torqueRamo as RPM variable, false uses motorSpeed. 
 const int maxPayload = 255;
-const int minPayload = 240;
+const int minPayload = 100;
 const int torqueRampSmoother =10; //The smaller this number is, the slower the acceleration will be. 
-const int torqueRampDelay= 100; 
+const int torqueRampDelay= 500; 
+const int motorSpeed = 255; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
 
 /*****************MOTOR DIRECTION**********/
 bool motor1 = false;
@@ -47,7 +44,15 @@ bool motor3 = false;
 
 AsyncWebServer server(80); 
 
-const int led = 21;
+
+bool inMove = false;
+
+/****Unused variables
+const int motorSpeed = 140; //Motor speed, this variable will define the motor speed, to define the number follow the following ecuation: Max_RPM*motorSpeed/255=Speed_expected. 
+bool motorTimeControl = true; //True if the users wants to control the time the robot is activated, false if not. 
+const int motorDelay = 100; //Defines the amount of time the robot will move 
+*///
+
 
 /// Create the website
 String getPage(){
@@ -284,28 +289,39 @@ void forward(){
   moveMotor(1,"CCW");
   moveMotor(2,"CW");
   moveMotor(3,"Off");
-  torqueRamp("CCW","CW","Off");
+  if (enableTorqueRamp)
+  {
+    torqueRamp("CCW","CW","Off");
+  }
 }
 
 void left(){
   moveMotor(1,"CCW");
   moveMotor(2,"CCW");
   moveMotor(3,"CW");
-  torqueRamp("CCW","CCW","CW");
+  if (enableTorqueRamp)
+  {
+    torqueRamp("CCW","CCW","CW");
+  }
 }
 
 void right(){
   moveMotor(1,"CW");
   moveMotor(2,"CW");
   moveMotor(3,"CCW");
-  torqueRamp("CW","CW","CCW");
+  if (enableTorqueRamp){
+    torqueRamp("CW","CW","CCW");
+  }
 }
 
 void down(){
   moveMotor(1,"CW");
   moveMotor(2,"CCW");
   moveMotor(3,"Off");
-  torqueRamp("CW","CCW","Off");
+  if (enableTorqueRamp)
+  {
+    torqueRamp("CW","CCW","Off");
+  }
 }
 
 void stop(){
@@ -319,21 +335,27 @@ void CW(){
   moveMotor(1,"CW");
   moveMotor(2,"CW");
   moveMotor(3,"CW");
-  torqueRamp("CW","CW","CW");
+  if (enableTorqueRamp){
+    torqueRamp("CW","CW","CW");
+  }
 }
 
 void CCW(){
   moveMotor(1,"CCW");
   moveMotor(2,"CCW");
   moveMotor(3,"CCW");
-  torqueRamp("CCW","CCW","CCW");
+  if (enableTorqueRamp){
+    torqueRamp("CCW","CCW","CCW");
+  }
 }
 
 
 void moveMotor(int motor, String direction){
   switch (motor){
     case 1:
-     //analogWrite(pinEnable[0],motorSpeed);
+      if (!enableTorqueRamp){
+        analogWrite(pinEnable[0],motorSpeed);
+      }
       if(direction == "CCW"){
         if (motor1){
           digitalWrite(pinMotor[0],LOW);
@@ -371,8 +393,10 @@ void moveMotor(int motor, String direction){
         Serial.println("Off");
       }
       break;
-    case 2: 
-      //analogWrite(pinEnable[1],motorSpeed);
+    case 2:
+      if (!enableTorqueRamp){ 
+        analogWrite(pinEnable[1],motorSpeed);
+      }
       if(direction == "CCW"){
         if (motor2){
           digitalWrite(pinMotor[2],LOW);
@@ -412,7 +436,9 @@ void moveMotor(int motor, String direction){
       }
       break;
     case 3:
-      //analogWrite(pinEnable[2],motorSpeed);
+      if (!enableTorqueRamp){
+        analogWrite(pinEnable[2],motorSpeed);
+      }
       if(direction == "CCW"){
         if (motor3){
           digitalWrite(pinMotor[4],LOW);

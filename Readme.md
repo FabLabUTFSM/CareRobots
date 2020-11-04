@@ -55,26 +55,30 @@ This variables configure the motors pins. In this case, the conection are config
 
 
 ```
-//Section 1
+
 const int pinMotor[]= {12,27,15,33,22,23};// {moto1CW,motor1CCW,moto2CW,motor2CCW,moto3CW,motor3CCW}
 const int pinEnable[]={21,32,14};
+const int led = 13;
  ```
 ##### Torque Ramp Setting
 
 This section works specifically for the torque ramp variables. The torque ramp is used as a patch meanwhile an speed control PID is implemented. 
 
 Key:
- * maxPayload: PWM payload in wich the robot breaks the inertia. 
+* enableTorqueRamp: True if the user is going to work with a torque ramp, false if the user is going to use fix torque value, set in motorSpeed. 
+ * maxPayload: PWM payload in wich the robot breaks the inertia. The maximum value it can take is 255. 
  * minPayload: PWM payload for the normal speed we want to aim for our robot. 
  * torqueRampSmoother: Will set te amount of cycles in wich the robot will reach the desired speed. A big number will take more time to reach the speed, but in a smoother way. 
  * delay: Time wich a PWM torque stays working. 
  The ramp time will be defines by the following equation: (maxPayload-minPayload)*delay/toqueRampSmoother. 
 
 ```
+bool enableTorqueRamp = true;
 const int maxPayload = 255;
 const int minPayload = 240;
 const int torqueRampSmoother =10; 
 const int torqueRampDelay= 100; 
+const int motorSpeed = 255;
 ```
 ##### Motor direction
 
